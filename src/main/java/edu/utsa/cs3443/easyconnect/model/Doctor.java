@@ -17,5 +17,24 @@ public class Doctor extends User implements toCSV {
         this.notes = new ArrayList<>();
     }
 
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
 
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public void prescribeMedication(String patientID) {
+
+    }
+
+    public void writeNote(String patientID) {
+
+    }
+
+    @Override
+    public String toCSV() {
+
+    }
 }
