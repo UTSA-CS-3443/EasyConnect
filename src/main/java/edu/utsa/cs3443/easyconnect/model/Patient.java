@@ -1,5 +1,5 @@
 package edu.utsa.cs3443.easyconnect.model;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.io.IOException;
 public class Patient extends User implements toCSV {
