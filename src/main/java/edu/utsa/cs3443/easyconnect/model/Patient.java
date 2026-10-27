@@ -75,6 +75,10 @@ public class Patient extends User implements toCSV {
         //Note use toCSV
     }
 
+    public String toCSV(){
+
+        return "";
+    }
 
 
 
