@@ -1,6 +1,8 @@
 package edu.utsa.cs3443.easyconnect.model;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Patient extends User  {
+import java.io.IOException;
+public class Patient extends User implements toCSV {
     private ArrayList<Appointment> appointments;
     private MedicalRecord medicalRecord;
     private double balance;
@@ -15,6 +17,66 @@ public class Patient extends User  {
         this.notes = (notes != null) ? notes : new ArrayList<>();
 
     }
+
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+    public double getBalance() {
+        return balance;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    public ArrayList<String> getNotes() {
+        return notes;
+    }
+    public void setNotes(ArrayList<String> notes) {
+        this.notes = notes;
+    }
+    public ArrayList<Medication> getMedications() {
+        return medications;
+    }
+    public void setMedications(ArrayList<Medication> medications) {
+        this.medications = medications;
+    }
+    /*
+    NOTE* Work on this later
+    @Override
+    public String toString() {
+        return
+    }
+
+     */
+    public void submitForm(MedicalRecord newRecord) {
+        this.medicalRecord = newRecord;
+    }
+
+    public void scheduleAppointment(String d, String t) {
+        this.appointments.add(new Appointment(d,t));
+    }
+    public void makePayment(double p){
+        if(p <= 0){
+            throw new IllegalArgumentException("Payment must be greater than 0");
+
+        }
+        if(p > balance){
+            throw new IllegalArgumentException("Payment is more than the balance due");
+        }
+        balance = balance - p;
+        //Note use toCSV
+    }
+
+
+
 
 
 
