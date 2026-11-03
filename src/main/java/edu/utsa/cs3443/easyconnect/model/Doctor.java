@@ -25,12 +25,27 @@ public class Doctor extends User implements toCSV {
         this.appointments = appointments;
     }
 
-    public void prescribeMedication(String patientID) {
+    public void prescribeMedication(Patient patient, Medication medication) {
+        if (patient == null) {
+            throw new IllegalArgumentException("Patient is required");
+        }
+        if (medication == null) {
+            throw new IllegalArgumentException("Medication is required");
+        }
 
+        patient.getMedications().add(medication);
     }
 
-    public void writeNote(String patientID) {
+    public void writeNote(Patient patient, String note) {
+        if (patient == null) {
+            throw new IllegalArgumentException("Patient is required");
+        }
 
+        if (note == null || note.trim().isEmpty()) {
+            throw new IllegalArgumentException("Note cannot be empty");
+        }
+
+        patient.getNotes().add(note.trim());
     }
 
     @Override
