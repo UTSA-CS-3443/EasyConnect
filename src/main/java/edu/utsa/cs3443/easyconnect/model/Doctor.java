@@ -48,6 +48,7 @@ public class Doctor extends User implements toCSV {
         patient.getNotes().add(note.trim());
     }
 
+    //Check later
     @Override
     public String toCSV() {
         return null;
