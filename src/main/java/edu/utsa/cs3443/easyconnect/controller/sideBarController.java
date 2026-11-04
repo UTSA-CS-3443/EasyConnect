@@ -21,7 +21,7 @@ private void addItem(String name, String fxml){
     button.setMaxWidth(Double.MAX_VALUE);
     button.setOnAction(e -> {
         if(button.isSelected()) {
-            scenes.navigateTo(fxml);
+            scenes.navigateScreen(fxml);
         }
         else{
             button.setSelected(true);
