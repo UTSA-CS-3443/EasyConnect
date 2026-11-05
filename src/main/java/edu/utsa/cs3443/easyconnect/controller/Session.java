@@ -2,9 +2,15 @@ package edu.utsa.cs3443.easyconnect.controller;
 import edu.utsa.cs3443.easyconnect.model.Doctor;
 import edu.utsa.cs3443.easyconnect.model.User;
 import edu.utsa.cs3443.easyconnect.model.Patient;
+import edu.utsa.cs3443.easyconnect.model.DataHandler;
+
+
+
 public class Session {
     private static Session instance;
     private User currentUser;
+
+    private static DataHandler dataHandler;
 
     private Session(){}
 
@@ -14,6 +20,12 @@ public class Session {
             instance = new Session();
         }
         return instance;
+    }
+    public static DataHandler getDataHandler(){
+        if(dataHandler == null){
+            dataHandler = new DataHandler();
+        }
+        return dataHandler;
     }
     public User getCurrentUser() {
         return currentUser;
