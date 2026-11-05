@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class MedicalRecord implements toCSV {
 
-    ArrayList<String> symptoms;
-    ArrayList<Medication> medications;
-    String medicalHistory;
-    String filePath;
+    private ArrayList<String> symptoms;
+    private ArrayList<Medication> medications;
+    private String medicalHistory;
+    private String filePath;
+    private String id;
 
-    public MedicalRecord(String m, String f) {
+    public MedicalRecord(String id, String m, String f) {
+        this.id = id;
         medicalHistory = m;
         filePath = f;
         symptoms = new ArrayList<>();
@@ -18,6 +20,14 @@ public class MedicalRecord implements toCSV {
 
     public ArrayList<String> getSymptoms() {
         return symptoms;
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
     public ArrayList<Medication> getMedications() {

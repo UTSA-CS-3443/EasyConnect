@@ -6,7 +6,10 @@ public class Medication implements toCSV{
     String dosage;
     int frequency;
 
-    public Medication(String n, String d, int f) {
+    private String id;
+
+    public Medication(String id, String n, String d, int f) {
+        this.id = id;
         name = n;
         dosage = d;
         frequency = f;
@@ -34,6 +37,14 @@ public class Medication implements toCSV{
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
     public String toCSV() {

@@ -9,9 +9,9 @@ public class User implements toCSV {
     private String gender;
     private String dateOfBirth;
     private String phoneNumber;
-    private int id;
+    private String id;
 
-    public User(String n, String p, String e, String a, String g, String d, String pN, int i) {
+    public User(String id, String n, String p, String e, String a, String g, String d, String pN) {
         name = n;
         password = p;
         email = e;
@@ -19,7 +19,7 @@ public class User implements toCSV {
         gender = g;
         dateOfBirth = d;
         phoneNumber = pN;
-        id = i;
+        this.id = id;
     }
 
     public String getName() {
@@ -50,7 +50,7 @@ public class User implements toCSV {
         return phoneNumber;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -82,7 +82,7 @@ public class User implements toCSV {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
