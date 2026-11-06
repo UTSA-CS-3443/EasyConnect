@@ -9,7 +9,7 @@
 .headerMain-Text {
     -fx-text-alignment: center;
     -fx-text-fill: #000080;
-    -fx-font-family: "JetBrains Mono"
+    -fx-font-family: "JetBrains Mono";
     -fx-font-size: 20;
     -fx-font-weight: bold;
 }
@@ -23,7 +23,7 @@
 .headerSmall-Text {
     -fx-text-alignment: left;
     -fx-text-fill: #000000;
-    -fx-font-family: "JetBrains Mono"
+    -fx-font-family: "JetBrains Mono";
     -fx-font-size: 12;
     -fx-font-weight: bold;
 }
@@ -37,5 +37,5 @@
 .button-Text {
     -fx-text-alignment: center;
     -fx-text-fill: #FFFFFF;
-    -fx-font-family: "JetBrains Mono"
+    -fx-font-family: "JetBrains Mono";
 }
