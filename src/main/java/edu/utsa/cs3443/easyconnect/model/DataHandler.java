@@ -119,4 +119,109 @@ public class DataHandler {
         return medications1;
     }
 
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public void addDoctor(Doctor doctor) {
+        doctors.add(doctor);
+    }
+
+    /**
+     * Returns the index of the patient found using the passed id
+     *
+     * @param id the id of the patient
+     * @return the index the patient is found at. {@code -1} if not found.
+     */
+    public int findPatient(String id) {
+        for (int i = 0; i < patients.size(); i++) {
+            if(patients.get(i).getId().equals(id))
+                return i;
+        }
+        return -1;
+    }
+
+    /**
+     * Returns the index of the doctor found using the passed id
+     *
+     * @param id the id of the doctor
+     * @return the index the doctor is found at. {@code -1} if not found.
+     */
+    public int findDoctor(String id) {
+        for (int i = 0; i < doctors.size(); i++) {
+            if(doctors.get(i).getId().equals(id))
+                return i;
+        }
+        return -1;
+    }
+
+    /**
+     * Finds and returns the patient object based on the id.
+     *
+     * @param id The id of the patient
+     * @return the patient object searched for. {@code null} if not found
+     */
+    public Patient getPatient(String id) {
+        int index = findPatient(id);
+        if(index != -1)
+            return patients.get(index);
+        else return null;
+    }
+
+    /**
+     * Finds and returns the doctor object based on its id.
+     *
+     * @param id The id of the doctor
+     * @return the doctor object searched for. {@code null} if not found
+     */
+    public Doctor getDoctor(String id) {
+        int index = findDoctor(id);
+        if(index != -1)
+            return doctors.get(index);
+        else return null;
+    }
+
+    /**
+     * Deletes a patient based on the passed id.
+     *
+     * @param id The id of the patient
+     * @return {@code true} if the deletion was successful. {@code false} if not.
+     */
+    public boolean deletePatient(String id) {
+        int index = findPatient(id);
+        if(index == -1)
+            return false;
+        return patients.remove(index) != null;
+    }
+
+    /**
+     * Deletes a doctor based on the passed id.
+     *
+     * @param id The id of the doctor
+     * @return {@code true} if the deletion was successful. {@code false} if not.
+     */
+    public boolean deleteDoctor(String id) {
+        int index = findDoctor(id);
+        if(index == -1)
+            return false;
+        return doctors.remove(index) != null;
+    }
+
+    /**
+     * Updates a patient's information with a passed patient object created in the controller
+     *
+     * @param p New patient with values we want to copy
+     */
+    public void updatePatient(Patient p) {
+        patients.set(findPatient(p.getId()), p);
+    }
+
+    /**
+     * Updates a doctor's information with a passed doctor object created in the controller
+     *
+     * @param d New doctor with values we want to copy
+     */
+    public void updateDoctor(Doctor d) {
+        doctors.set(findDoctor(d.getId()), d);
+    }
 }
