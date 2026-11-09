@@ -5,7 +5,6 @@ public class Medication implements toCSV{
     String name;
     String dosage;
     int frequency;
-
     private String id;
 
     public Medication(String id, String n, String d, int f) {
@@ -48,6 +47,6 @@ public class Medication implements toCSV{
     }
 
     public String toCSV() {
-        return null;
+        return String.format("%s,%s,%s,%d", id, name, dosage, frequency);
     }
 }

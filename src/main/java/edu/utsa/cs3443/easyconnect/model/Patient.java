@@ -7,9 +7,9 @@ public class Patient extends User implements toCSV {
     private ArrayList<Appointment> appointments;
     private MedicalRecord medicalRecord;
     private double balance;
-    private ArrayList<String> notes;
+    private ArrayList<Note> notes;
     private ArrayList<Medication> medications;
-    public Patient(String id, String n, String p, String e, String a, String g, String d, String pN, double b, ArrayList<Appointment> appointments, ArrayList<Medication> medications, ArrayList<String> notes, MedicalRecord record) {
+    public Patient(String id, String n, String p, String e, String a, String g, String d, String pN, double b, ArrayList<Appointment> appointments, ArrayList<Medication> medications, ArrayList<Note> notes, MedicalRecord record) {
         super(id, n, p, e, a, g, d, pN);
         this.appointments = (appointments != null) ? appointments : new ArrayList<>();
         this.medications = (medications != null) ? medications : new ArrayList<>();
@@ -32,10 +32,10 @@ public class Patient extends User implements toCSV {
         this.medicalRecord = medicalRecord;
     }
 
-    public ArrayList<String> getNotes() {
+    public ArrayList<Note> getNotes() {
         return notes;
     }
-    public void setNotes(ArrayList<String> notes) {
+    public void setNotes(ArrayList<Note> notes) {
         this.notes = notes;
     }
     public ArrayList<Medication> getMedications() {
