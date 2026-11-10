@@ -1,0 +1,31 @@
+1001,
+MEDICAL RECORD
+     Patient ID: 1001
+     Name: Maria Gonzalez
+     Date of Birth: 1985-03-14
+
+     MEDICAL HISTORY
+     - Type 2 diabetes, diagnosed 2018, managed with diet and medication.
+     - Hypertension, diagnosed 2020.
+     - Seasonal allergies since childhood.
+     - Family history: mother with type 2 diabetes, father with hypertension.
+
+     PAST MEDICATIONS
+     - Glipizide 5mg (2018-2019), discontinued due to mild dizziness.
+     - Amlodipine 5mg (2020-2021), switched to Lisinopril for better blood pressure control.
+
+     CURRENT MEDICATIONS
+     - Lisinopril 10mg, once daily.
+     - Metformin 500mg, twice daily.
+
+     SURGERIES AND PROCEDURES
+     - Appendectomy, 2003. No complications.
+     - Cesarean section, 2014. No complications.
+
+     CURRENT SYMPTOMS
+     - Occasional fatigue in the afternoon.
+     - Mild tingling in the feet, reported in the last two months.
+     - Increased thirst on days with higher blood sugar readings.
+
+1002,blah blah blah
+1003,blah blah blah

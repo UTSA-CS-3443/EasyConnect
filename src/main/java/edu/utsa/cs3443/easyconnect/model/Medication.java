@@ -5,10 +5,12 @@ public class Medication implements toCSV{
     String name;
     String dosage;
     int frequency;
-    private String id;
+    private String patientID;
+    private String doctorID;
 
-    public Medication(String id, String n, String d, int f) {
-        this.id = id;
+    public Medication(String patientID, String doctorID, String n, String d, int f) {
+        this.patientID = patientID;
+        this.doctorID = doctorID;
         name = n;
         dosage = d;
         frequency = f;
@@ -38,15 +40,23 @@ public class Medication implements toCSV{
         this.frequency = frequency;
     }
 
-    public String getId(){
-        return id;
+    public String getPatientID(){
+        return patientID;
     }
 
-    public void setId(String id){
-        this.id = id;
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public void setPatientID(String id){
+        this.patientID = id;
+    }
+
+    public void setDoctorID(String id) {
+        this.doctorID = id;
     }
 
     public String toCSV() {
-        return String.format("%s,%s,%s,%d", id, name, dosage, frequency);
+        return String.format("%s,%s,%s,%s,%d", patientID, doctorID, name, dosage, frequency);
     }
 }

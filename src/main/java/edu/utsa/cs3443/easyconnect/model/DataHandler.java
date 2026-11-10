@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.easyconnect.model;
 
+import java.awt.peer.ListPeer;
 import java.io.*;
 import java.nio.Buffer;
 import java.util.ArrayList;
@@ -9,10 +10,8 @@ public class DataHandler {
 
     private ArrayList<Patient> patients;
     private ArrayList<Doctor> doctors;
-
-    private final String doctorFile = "data/doctor.csv";
     private final String userFile = "data/user.csv";
-    private final String medicalRecordFile = "data/medicalRecord.csv";
+    private final String medicalRecordFile = "data/medicalRecord.txt";
     private final String appointmentFile = "data/appointment.csv";
     private final String medicationFile = "data/medication.csv";
     private final String noteFile = "data/note.csv";
@@ -22,6 +21,9 @@ public class DataHandler {
         doctors = new ArrayList<>();
     }
 
+    /**
+     * Saves all information to the data files.
+     */
     public void save() {
         try {
             saveUsers();
@@ -152,29 +154,24 @@ public class DataHandler {
 
 
     /**
-     * Loads all the patient and doctor data from the files into the lists.
-     *
-     * Loads all other files as well to get respective data.
+     * Loads all patients from the user file. Finds relevant information in other files.
      */
-    public void loadUserFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader("data/patient.csv"))) {
+    public void loadPatients() {
+        try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
             String line;
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] s = line.split(",");
-                User u = new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
-                if (s[1].equals("Patient")) {
+                if (s[1].equals("patient")) {
                     String id = s[0];
 
                     MedicalRecord mr = loadMedicalRecord(id);
-                    ArrayList<Appointment> appointments = loadAppointments(id);
-                    ArrayList<Note> notes = loadNotes(id);
-                    ArrayList<Medication> medications = loadMedications(id);
+                    ArrayList<Appointment> appointments = loadAppointments(id, true);
+                    ArrayList<Note> notes = loadNotes(id, true);
+                    ArrayList<Medication> medications = loadMedications(id, true);
 
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,balance,appointments,medications,notes,medicalRecord
                     patients.add(new Patient(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], Double.parseDouble(s[9]), appointments, medications, notes, mr));
-                } else if (s[1].equals("Doctor")) {
-//                    doctors.add(new Doctor(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8],));
                 }
             }
 
@@ -183,6 +180,36 @@ public class DataHandler {
         }
     }
 
+    /**
+     * Loads all doctors from the user file. Finds relevant information in other files.
+     */
+    public void loadDoctors() {
+        try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] s = line.split(",");
+                if (s[1].equals("doctor")) {
+                    String id = s[0];
+
+                    ArrayList<Appointment> appointments = loadAppointments(id, false);
+                    ArrayList<Note> notes = loadNotes(id, false);
+
+                    //id,name,password,email,address,gender,dateOfBirth,phoneNumber,appointments,notes
+                    doctors.add(new Doctor(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], appointments, notes));
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Saves all user information to the user file. Both patients and doctors.
+     *
+     * @throws IOException if the writer encounters any issues.
+     */
     public void saveUsers() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(userFile));
 
@@ -203,7 +230,7 @@ public class DataHandler {
      * Returns a medical record based on the given id. Searches the medical record file.
      *
      * @param id The id whose medical record is being searched for.
-     * @return the medical record if found. Otherise returns {@code null}.
+     * @return the medical record if found. Otherwise, returns {@code null}.
      * @throws FileNotFoundException if the medical record file is not found correctly.
      */
     public MedicalRecord loadMedicalRecord(String id) throws FileNotFoundException {
@@ -222,6 +249,11 @@ public class DataHandler {
         return null;
     }
 
+    /**
+     * Saves all medical record data to the medical record file. Uses the toCSV method.
+     *
+     * @throws IOException if the writer encounters any issues.
+     */
     public void saveMedicalRecords() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(medicalRecordFile));
 
@@ -233,14 +265,26 @@ public class DataHandler {
         writer.close();
     }
 
-    public ArrayList<Appointment> loadAppointments(String id) throws IOException {
+    /**
+     * Loads the appointments associated with a specific id. Can be a patient or doctor.
+     *
+     * @param id The patient or doctor id.
+     * @param isPatient Whether the id is a patient or doctor.
+     * @return Returns a list of the appointments.
+     * @throws IOException if the loader encounters any issues.
+     */
+    public ArrayList<Appointment> loadAppointments(String id, boolean isPatient) throws IOException {
         Scanner aFile = new Scanner(new File(appointmentFile));
         ArrayList<Appointment> appointments = new ArrayList<>();
 
         while (aFile.hasNext()) {
             String[] aLine = aFile.nextLine().split(",");
-            if (id.equals(aLine[0])) {
+            if (isPatient && id.equals(aLine[0])) {
                 Appointment a = new Appointment(id, aLine[1], aLine[2], aLine[3]);
+                appointments.add(a);
+            }
+            else if (!isPatient && id.equals(aLine[1])) {
+                Appointment a = new Appointment(aLine[0], id, aLine[2], aLine[3]);
                 appointments.add(a);
             }
         }
@@ -249,6 +293,11 @@ public class DataHandler {
         return appointments;
     }
 
+    /**
+     * Saves all appointment data to the appointment file. Uses the toCSV method.
+     *
+     * @throws IOException if the writer encounters any issues.
+     */
     public void saveAppointments() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(appointmentFile));
 
@@ -262,14 +311,26 @@ public class DataHandler {
         writer.close();
     }
 
-    public ArrayList<Note> loadNotes(String id) throws IOException {
+    /**
+     * Loads the notes associated with a specific id. Can be a patient or doctor.
+     *
+     * @param id The patient or doctor id.
+     * @param isPatient Whether the id is a patient or doctor.
+     * @return Returns a list of the notes.
+     * @throws IOException if the loader encounters any issues.
+     */
+    public ArrayList<Note> loadNotes(String id, boolean isPatient) throws IOException {
         Scanner nFile = new Scanner(new File(noteFile));
         ArrayList<Note> notes = new ArrayList<>();
 
         while (nFile.hasNext()) {
             String[] nLine = nFile.nextLine().split(",");
-            if (id.equals(nLine[0])) {
-                Note n = new Note(nLine[0], nLine[1]);
+            if (isPatient && id.equals(nLine[0])) {
+                Note n = new Note(id, nLine[1], nLine[2]);
+                notes.add(n);
+            }
+            else if(!isPatient && id.equals(nLine[1])) {
+                Note n = new Note(nLine[0], id, nLine[2]);
                 notes.add(n);
             }
         }
@@ -294,14 +355,26 @@ public class DataHandler {
         }
     }
 
-    public ArrayList<Medication> loadMedications(String id) throws IOException {
+    /**
+     * Loads the medications associated with a specific id. Can be a patient or doctor.
+     *
+     * @param id The patient or doctor id.
+     * @param isPatient Whether the id is a patient or doctor.
+     * @return Returns a list of the medications.
+     * @throws IOException if the loader encounters any issues.
+     */
+    public ArrayList<Medication> loadMedications(String id, boolean isPatient) throws IOException {
         Scanner mFile = new Scanner(new File(medicationFile));
         ArrayList<Medication> medications = new ArrayList<>();
 
         while (mFile.hasNext()) {
             String[] mLine = mFile.nextLine().split(",");
-            if (id.equals(mLine[0])) {
-                Medication a = new Medication(id, mLine[1], mLine[2], Integer.parseInt(mLine[3]));
+            if (isPatient && id.equals(mLine[0])) {
+                Medication a = new Medication(id, mLine[1], mLine[2], mLine[3], Integer.parseInt(mLine[3]));
+                medications.add(a);
+            }
+            else if(!isPatient && id.equals(mLine[1])) {
+                Medication a = new Medication(mLine[0], id, mLine[2], mLine[3], Integer.parseInt(mLine[3]));
                 medications.add(a);
             }
         }

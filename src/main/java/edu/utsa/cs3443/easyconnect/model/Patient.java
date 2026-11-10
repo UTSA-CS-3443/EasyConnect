@@ -50,6 +50,7 @@ public class Patient extends User implements toCSV {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
     /*
     NOTE* Work on this later
     @Override

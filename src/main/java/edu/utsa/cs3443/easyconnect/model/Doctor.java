@@ -6,10 +6,10 @@ public class Doctor extends User implements toCSV {
 
     private ArrayList<Appointment> appointments;
     private ArrayList<String> patients;
-    private ArrayList<String> notes;
+    private ArrayList<Note> notes;
 
     public Doctor(String id, String name, String password, String email, String address, String gender,
-                  String dateOfBirth, String phoneNumber, ArrayList<Appointment> appointments) {
+                  String dateOfBirth, String phoneNumber, ArrayList<Appointment> appointments, ArrayList<Note> notes) {
         super(id, name, password, email, address, gender, dateOfBirth, phoneNumber);
 
         this.appointments = appointments;
@@ -36,16 +36,17 @@ public class Doctor extends User implements toCSV {
         patient.getMedications().add(medication);
     }
 
-    public void writeNote(Patient patient, String note) {
+    public void writeNote(Patient patient, String n) {
         if (patient == null) {
             throw new IllegalArgumentException("Patient is required");
         }
 
-        if (note == null || note.trim().isEmpty()) {
+        if (n == null || n.trim().isEmpty()) {
             throw new IllegalArgumentException("Note cannot be empty");
         }
 
-        patient.getNotes().add(note.trim());
+        Note note = new Note(patient.getId(), getId(), n);
+        patient.getNotes().add(note);
     }
 
     //Check later
