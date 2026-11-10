@@ -16,8 +16,8 @@
 
 .headerMain-Background {
     -fx-background-color: #ADF2D7;
-    -fx-stroke: #000000;
-    -fx-stroke-width: 2;
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
 }
 
 .headerSmall-Text {
