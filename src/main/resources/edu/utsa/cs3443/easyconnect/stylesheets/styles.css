@@ -39,3 +39,7 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-family: "JetBrains Mono";
 }
+
+.button-Background:selected {
+    -fx-background-color: #0A0F55;
+}
