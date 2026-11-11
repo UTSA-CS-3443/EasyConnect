@@ -4,6 +4,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -17,9 +19,23 @@ private final Session session = Session.getInstance();
 
 private void addItem(String name, String fxml){
     ToggleButton button = new ToggleButton(name);
-    button.getStyleClass().addAll("button-Background", "Button-Text");
+    button.getStyleClass().add("sidebar-item");
     button.setToggleGroup(toggleGroup);
     button.setMaxWidth(Double.MAX_VALUE);
+
+    button.selectedProperty().addListener((observable, oldValue, newValue) -> {
+        if(newValue) {
+            button.getStyleClass().remove("sidebar-item-selected");
+            button.setGraphic(null);
+
+        }
+        else {
+            button.getStyleClass().remove("sidebar-item-selected");
+            button.setGraphic(dotSelection());
+        }
+    });
+
+
     button.setOnAction(e -> {
         if(button.isSelected()) {
             scenes.navigateScreen(fxml);
@@ -30,6 +46,10 @@ private void addItem(String name, String fxml){
     });
     sideItems.put(fxml, button);
     menu.getChildren().add(button);
+}
+
+private Circle dotSelection(){
+    return new Circle(3, Color.web("#6C71E0"));
 }
 
 public void selectItem(String fxml){
@@ -60,15 +80,13 @@ public void createMenu() {
         addItem("Doctor's Notes", "patientRecomendations.fxml");
         addItem("Account", "account.fxml");
     }
-        Button logout = new Button("Logout");
-        logout.getStyleClass().addAll("button-Background", "Button-Text");
-        logout.setMaxWidth(Double.MAX_VALUE);
-    logout.setOnAction(e -> {
-        session.logout();
-        scenes.showRoleSelection();
-    });
-    menu.getChildren().add(logout);
-    ((ToggleButton) menu.getChildren().get(0)).setSelected(true);
+    ((ToggleButton) menu.getChildren().get(0)).fire();
+}
+
+    @FXML
+    private void onLogout(){
+    session.logout();
+    scenes.showRoleSelection();
 }
 
 

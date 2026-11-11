@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="edu.utsa.cs3443.easyconnect.controller.sideBarController"
-      fx:id="menu" spacing="6" prefWidth="220"
-      styleClass="component-Background">
+<VBox alignment="TOP_CENTER" prefWidth="170" spacing="14" styleClass="sidebar" stylesheets="@../stylesheets/sidebar.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.sideBarController">
     <padding>
-        <Insets top="16" right="14" bottom="16" left="14"/>
+        <Insets bottom="14" left="10" right="10" top="12" />
     </padding>
+
+    <ImageView fitWidth="110" preserveRatio="true">
+        <image>
+            <Image url="@../assets/Logo.png" />
+        </image>
+    </ImageView>
+
+
+    <VBox fx:id="menuBox" spacing="2" />
+
+    <Region VBox.vgrow="ALWAYS" />
+
+    <Button maxWidth="Infinity" onAction="#onLogout" prefHeight="34" style="-fx-background-radius: 12; -fx-border-radius: 12;" styleClass="button-Background, button-Text" text="Logout">
+      <stylesheets>
+         <URL value="@../stylesheets/sidebar.css" />
+         <URL value="@../stylesheets/styles.css" />
+      </stylesheets></Button>
 </VBox>
