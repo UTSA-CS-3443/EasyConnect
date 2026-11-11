@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.PatientDashboardController">
+   <children>
+      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="690.0" spacing="25.0" styleClass="screen-Background" stylesheets="@../stylesheets/styles.css">
+         <children>
+            <Label styleClass="headerMain-Text" text="Dashboard">
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="144.0" prefWidth="697.0" spacing="50.0" stylesheets="@../stylesheets/styles.css">
+               <padding>
+                  <Insets left="75.0" />
+               </padding>
+               <children>
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
+                     <children>
+                        <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Next Appointment" />
+                        <Label styleClass="component-Text" text="Date here">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
+                     <children>
+                        <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Medications" />
+                        <Label styleClass="component-Text" text="Meds here">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
+                     <children>
+                        <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Payment Due" />
+                        <Label styleClass="component-Text" text="Payment here">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="component-Background">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="40.0" />
+               </VBox.margin>
+               <children>
+                  <Label styleClass="headerMain-Text" text="Quick Actions">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
+                     <children>
+                        <Button fx:id="fillOutFormButton" mnemonicParsing="false" style="-fx-font-size: 18;" text="Fill out Form">
+                           <styleClass>
+                              <String fx:value="button-Background" />
+                              <String fx:value="button-Text" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="scheduleAppointmentButton" mnemonicParsing="false" style="-fx-font-size: 18;" text="Schedule an Appointment">
+                           <styleClass>
+                              <String fx:value="button-Background" />
+                              <String fx:value="button-Text" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
