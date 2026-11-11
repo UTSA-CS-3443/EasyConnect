@@ -10,6 +10,7 @@ public class DataHandler {
 
     private ArrayList<Patient> patients;
     private ArrayList<Doctor> doctors;
+    private ArrayList<User> users;
     private final String userFile = "data/user.csv";
     private final String medicalRecordFile = "data/medicalRecord.txt";
     private final String appointmentFile = "data/appointment.csv";
@@ -19,6 +20,16 @@ public class DataHandler {
     public DataHandler() {
         patients = new ArrayList<>();
         doctors = new ArrayList<>();
+        users = new ArrayList<>();
+    }
+
+    public User findUsers(String email, String password){
+        for(User user : users){
+            if(user.getEmail().equals(email) && user.getPassword().equals(password)){
+                return user;
+            }
+        }
+        return null;
     }
 
     /**
@@ -172,6 +183,7 @@ public class DataHandler {
 
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,balance,appointments,medications,notes,medicalRecord
                     patients.add(new Patient(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], Double.parseDouble(s[9]), appointments, medications, notes, mr));
+                    users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
                 }
             }
 
@@ -197,6 +209,7 @@ public class DataHandler {
 
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,appointments,notes
                     doctors.add(new Doctor(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], appointments, notes));
+                    users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
                 }
             }
 

@@ -11,7 +11,6 @@ public class SceneManager {
     private BorderPane shell;
     private sideBarController sideMenu;
     private static SceneManager instance;
-
     private SceneManager() {}
 
     public static SceneManager getInstance() {
@@ -36,14 +35,17 @@ public class SceneManager {
         showOtherScreen("roleSelect.fxml");
     }
 
-    public void showLogin(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+    public void showLogin(String role){
+        String fxml = role.equals("doctor") ? "doctorLogin.fxml" : "patientlogin.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loadFile(loader);
         loginController lC = loader.getController();
         lC.setRole(role);
         stage.setScene(newScene(root));
 
     }
+
+
 
 
     public void intialize(Stage stage) {
