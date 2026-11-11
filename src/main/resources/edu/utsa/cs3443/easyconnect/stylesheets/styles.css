@@ -4,6 +4,19 @@
 
 .component-Background {
     -fx-background-color: #FFFFFF;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
+}
+
+.component-Header-Text {
+    fx-text-fill: #000000;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+.component-Text {
+    fx-text-fill: #000000;
+    -fx-font-size: 12;
 }
 
 .headerMain-Text {
@@ -12,12 +25,16 @@
     -fx-font-family: "JetBrains Mono";
     -fx-font-size: 20;
     -fx-font-weight: bold;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
 }
 
 .headerMain-Background {
     -fx-background-color: #ADF2D7;
     -fx-border-color: #000000;
     -fx-border-width: 2;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
 }
 
 .headerSmall-Text {
@@ -26,12 +43,16 @@
     -fx-font-family: "JetBrains Mono";
     -fx-font-size: 12;
     -fx-font-weight: bold;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
 }
 
 .button-Background {
     -fx-background-color: #141B83;
     -fx-stroke: #000000;
     -fx-stroke-width: 2;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
 }
 
 .button-Text {

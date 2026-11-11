@@ -1,6 +1,6 @@
 id,userType,name,password,email,address,gender,dateOfBirth,phoneNumber,balance
-1001,patient,Maria Gonzalez,Passw0rd!Maria,maria.gonzalez@example.com,412 Alamo Heights Blvd San Antonio TX 78209,Female,1985-03-14,210-555-0142,125.5
-1002,patient,James Whitaker,Secure#James92,james.whitaker@example.com,88 Riverwalk Lane Austin TX 78701,Male,1972-11-02,512-555-0178,150
-1003,patient,Priya Nair,Pr!ya2024Test,priya.nair@example.com,2301 Maple Grove Dr Houston TX 77025,Female,1996-07-29,713-555-0116,500
-2001,doctor,Dr. Elena Ramirez,Doc#Elena2026,elena.ramirez@example.com,1500 Medical Center Dr San Antonio TX 78229,Female,1978-05-21,210-555-0193,0
-2002,doctor,Dr. Michael Chen,Chen!Med7781,michael.chen@example.com,920 Healthway Pkwy Houston TX 77030,Male,1969-09-08,713-555-0127,0
+1001,patient,Maria Gonzalez,Passw0rd!Maria,maria.gonzalez@example.com,412 Alamo Heights Blvd San Antonio TX 78209,Female,03-14-1985,210-555-0142,125.5
+1002,patient,James Whitaker,Secure#James92,james.whitaker@example.com,88 Riverwalk Lane Austin TX 78701,Male,11-02-1972,512-555-0178,150
+1003,patient,Priya Nair,Pr!ya2024Test,priya.nair@example.com,2301 Maple Grove Dr Houston TX 77025,Female,07-29-1996,713-555-0116,500
+2001,doctor,Dr. Elena Ramirez,Doc#Elena2026,elena.ramirez@example.com,1500 Medical Center Dr San Antonio TX 78229,Female,05-21-1978,210-555-0193,0
+2002,doctor,Dr. Michael Chen,Chen!Med7781,michael.chen@example.com,920 Healthway Pkwy Houston TX 77030,Male,09-08-1969,713-555-0127,0
