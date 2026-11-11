@@ -41,6 +41,10 @@ public class Patient extends User implements toCSV {
     public ArrayList<Medication> getMedications() {
         return medications;
     }
+    public Appointment getFirstAppointment() {
+        return appointments.get(0);
+    }
+
     public void setMedications(ArrayList<Medication> medications) {
         this.medications = medications;
     }
@@ -81,6 +85,9 @@ public class Patient extends User implements toCSV {
     public String toCSV(){
 
         return "";
+    }
+    public Medication getFirstMedication(){
+        return medications.get(0);
     }
 
 
