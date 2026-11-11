@@ -30,19 +30,21 @@ public class SceneManager {
     }
     public void showOtherScreen(String fxml){
         Parent root = loadFile(new FXMLLoader(getClass().getResource(fxml)));
-        stage.setScene(new Scene(root));
+        stage.setScene(newScene(root));
     }
     public void showRoleSelection(){
         showOtherScreen("roleSelect.fxml");
     }
-    /*
+
     public void showLogin(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = loadFile(loader);
         loginController lC = loader.getController();
-        //implement rest later
+        lC.setRole(role);
+        stage.setScene(newScene(root));
+
     }
-    */
+
 
     public void intialize(Stage stage) {
         this.stage = stage;
@@ -54,7 +56,7 @@ public class SceneManager {
 
         sideMenu = (sideBarController) loader.getNamespace().get("sideMenu");
         sideMenu.createMenu();
-        stage.setScene(new Scene(shell));
+        stage.setScene(newScene(shell));
     }
 
     public void showMainScreen(String fxml){
@@ -66,5 +68,9 @@ public class SceneManager {
         sideMenu.selectItem(fxml);
         showMainScreen(fxml);
     }
-
+    private Scene newScene(Parent root){
+        Scene scene  = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        return scene;
+    }
 }

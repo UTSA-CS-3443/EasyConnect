@@ -17,6 +17,7 @@ private final Session session = Session.getInstance();
 
 private void addItem(String name, String fxml){
     ToggleButton button = new ToggleButton(name);
+    button.getStyleClass().addAll("button-Background", "Button-Text");
     button.setToggleGroup(toggleGroup);
     button.setMaxWidth(Double.MAX_VALUE);
     button.setOnAction(e -> {
@@ -60,6 +61,7 @@ public void createMenu() {
         addItem("Account", "account.fxml");
     }
         Button logout = new Button("Logout");
+        logout.getStyleClass().addAll("button-Background", "Button-Text");
         logout.setMaxWidth(Double.MAX_VALUE);
     logout.setOnAction(e -> {
         session.logout();

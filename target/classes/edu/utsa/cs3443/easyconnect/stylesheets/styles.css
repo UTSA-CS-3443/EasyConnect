@@ -1,0 +1,45 @@
+.screen-Background {
+    -fx-background-color: #F1F1F1;
+}
+
+.component-Background {
+    -fx-background-color: #FFFFFF;
+}
+
+.headerMain-Text {
+    -fx-text-alignment: center;
+    -fx-text-fill: #000080;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.headerMain-Background {
+    -fx-background-color: #ADF2D7;
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+}
+
+.headerSmall-Text {
+    -fx-text-alignment: left;
+    -fx-text-fill: #000000;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+}
+
+.button-Background {
+    -fx-background-color: #141B83;
+    -fx-stroke: #000000;
+    -fx-stroke-width: 2;
+}
+
+.button-Text {
+    -fx-text-alignment: center;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "JetBrains Mono";
+}
+
+.button-Background:selected {
+    -fx-background-color: #0A0F55;
+}

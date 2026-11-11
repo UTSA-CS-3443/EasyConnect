@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500" prefWidth="860" styleClass="component-Background" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.sideBarController">
+
+    <top>
+        <HBox alignment="TOP_LEFT" spacing="24">
+            <padding><Insets bottom="0" left="24" right="28" top="16" /></padding>
+
+            <Label fx:id="titleLabel" alignment="CENTER" prefHeight="80" prefWidth="170" style="-fx-background-radius: 24;" styleClass="headerMain-Background, headerMain-Text" textAlignment="CENTER" wrapText="true" />
+
+            <Button onAction="#onBack" prefHeight="32" prefWidth="210" styleClass="button-Background, button-Text" text="Go Back to Main Screen">
+                <HBox.margin><Insets top="12" /></HBox.margin>
+            </Button>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+
+            <ImageView fitHeight="50" preserveRatio="true"><Image url="@edu.utsa.cs3443.easyconnect.assets.Logo.png" /></ImageView>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_LEFT" spacing="8">
+            <padding><Insets bottom="24" left="40" right="24" top="24" /></padding>
+
+            <Label styleClass="headerSmall-Text" text="Email" />
+            <TextField fx:id="emailField" maxWidth="360" prefHeight="42" prefWidth="360" />
+
+            <Label styleClass="headerSmall-Text" text="Password">
+                <VBox.margin><Insets top="16" /></VBox.margin>
+            </Label>
+            <PasswordField fx:id="passwordField" maxWidth="360" onAction="#onLogin" prefHeight="42" prefWidth="360" />
+
+            <Label fx:id="errorLabel" style="-fx-text-fill: #c23b3b;" />
+
+            <Button defaultButton="true" onAction="#onLogin" prefHeight="38" prefWidth="210" style="-fx-text-fill: #000000; -fx-font-size: 13px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #000000; -fx-border-width: 1;" styleClass="headerMain-Background" text="Login">
+                <VBox.margin><Insets left="64" /></VBox.margin>
+            </Button>
+
+            <Hyperlink fx:id="createAccountLink" onAction="#onCreateAccount" text="Create account">
+                <VBox.margin><Insets left="64" /></VBox.margin>
+            </Hyperlink>
+        </VBox>
+    </center>
+</BorderPane>

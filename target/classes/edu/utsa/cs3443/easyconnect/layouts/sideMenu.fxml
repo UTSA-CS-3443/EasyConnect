@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.sideBarController"
+      fx:id="menu" spacing="6" prefWidth="220"
+      styleClass="component-Background">
+    <padding>
+        <Insets top="16" right="14" bottom="16" left="14"/>
+    </padding>
+</VBox>

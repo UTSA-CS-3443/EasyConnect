@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="500" prefWidth="860.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+<AnchorPane prefHeight="500" prefWidth="860.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.roleSelectController">
    <children>
       <VBox layoutY="-1.0" prefHeight="500.0" prefWidth="862.0" style="-fx-background-color: #FFFFFF;">
          <children>

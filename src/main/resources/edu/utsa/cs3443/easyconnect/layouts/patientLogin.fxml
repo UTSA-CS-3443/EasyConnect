@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500" prefWidth="860" styleClass="component-Background" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.sideBarController">
+<BorderPane prefHeight="500" prefWidth="860" styleClass="component-Background" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.loginController">
 
     <top>
         <HBox alignment="TOP_LEFT" spacing="24" style="-fx-background-color: #FFFFFF;">
