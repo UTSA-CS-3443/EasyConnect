@@ -6,15 +6,16 @@ import java.io.IOException;
 public class Patient extends User implements toCSV {
     private ArrayList<Appointment> appointments;
     private MedicalRecord medicalRecord;
-    private double balance;
+    //private double balance;
+    private Payment payment;
     private ArrayList<Note> notes;
     private ArrayList<Medication> medications;
-    public Patient(String id, String n, String p, String e, String a, String g, String d, String pN, double b, ArrayList<Appointment> appointments, ArrayList<Medication> medications, ArrayList<Note> notes, MedicalRecord record) {
+    public Patient(String id, String n, String p, String e, String a, String g, String d, String pN, Payment payment, ArrayList<Appointment> appointments, ArrayList<Medication> medications, ArrayList<Note> notes, MedicalRecord record) {
         super(id, n, p, e, a, g, d, pN);
         this.appointments = (appointments != null) ? appointments : new ArrayList<>();
         this.medications = (medications != null) ? medications : new ArrayList<>();
         this.medicalRecord = record;
-        this.balance = b;
+        this.payment = payment;
         this.notes = (notes != null) ? notes : new ArrayList<>();
 
     }
@@ -48,12 +49,7 @@ public class Patient extends User implements toCSV {
     public void setMedications(ArrayList<Medication> medications) {
         this.medications = medications;
     }
-    public double getBalance() {
-        return balance;
-    }
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
+
 
     /*
     NOTE* Work on this later
@@ -75,10 +71,10 @@ public class Patient extends User implements toCSV {
             throw new IllegalArgumentException("Payment must be greater than 0");
 
         }
-        if(p > balance){
+        if(p > payment.getAmount()){
             throw new IllegalArgumentException("Payment is more than the balance due");
         }
-        balance = balance - p;
+        payment.setAmount(payment.getAmount() - p);
         //Note use toCSV
     }
 

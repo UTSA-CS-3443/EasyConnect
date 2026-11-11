@@ -11,6 +11,7 @@ public class DataHandler {
     private ArrayList<Patient> patients;
     private ArrayList<Doctor> doctors;
     private ArrayList<User> users;
+    private Payment payment;
     private final String userFile = "data/user.csv";
     private final String medicalRecordFile = "data/medicalRecord.txt";
     private final String appointmentFile = "data/appointment.csv";
@@ -163,6 +164,23 @@ public class DataHandler {
         doctors.set(findDoctor(d.getId()), d);
     }
 
+    private Payment findPayment(String id) {
+        try (BufferedReader br = new BufferedReader(new FileReader("data/payment.csv"))) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] s = line.split(",");
+                if(id.equals(s[0])){
+                    return new Payment(s[0], Double.parseDouble(s[1]), s[2]);
+                }
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     /**
      * Loads all patients from the user file. Finds relevant information in other files.
@@ -180,9 +198,9 @@ public class DataHandler {
                     ArrayList<Appointment> appointments = loadAppointments(id, true);
                     ArrayList<Note> notes = loadNotes(id, true);
                     ArrayList<Medication> medications = loadMedications(id, true);
-
+                    Payment p = findPayment(id);
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,balance,appointments,medications,notes,medicalRecord
-                    patients.add(new Patient(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], Double.parseDouble(s[9]), appointments, medications, notes, mr));
+                    patients.add(new Patient(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], p, appointments, medications, notes, mr));
                     users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
                 }
             }
