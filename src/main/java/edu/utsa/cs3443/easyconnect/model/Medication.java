@@ -59,4 +59,9 @@ public class Medication implements toCSV{
     public String toCSV() {
         return String.format("%s,%s,%s,%s,%d", patientID, doctorID, name, dosage, frequency);
     }
+
+    @Override
+    public String toString() {
+        return "" + getName() + ", " + getDosage() + ", " + getFrequency();
+    }
 }

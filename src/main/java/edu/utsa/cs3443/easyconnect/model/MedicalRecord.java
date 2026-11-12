@@ -94,8 +94,38 @@ public class MedicalRecord implements toCSV {
         }
         return null;
     }
-
+    @Override
     public String toCSV() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append(id).append(",\n");
+        sb.append("MEDICAL RECORD\n");
+        sb.append("     Patient ID: ").append(id).append("\n\n");
+
+        sb.append("     MEDICAL HISTORY\n");
+        if(medicalHistory != null && !medicalHistory.trim().isEmpty()) {
+            sb.append("- ").append(medicalHistory).append("\n\n");
+        }
+        else{
+            sb.append("- \n\n");
+        }
+        sb.append("     CURRENT MEDICATIONS\n");
+        if(medications != null && !medications.isEmpty()){
+            for(Medication m: medications){
+                sb.append("- ").append(m.toString()).append("\n\n");
+            }
+        }
+        else{
+            sb.append("- \n\n");
+        }
+        sb.append("     CURRENT SYMPTOMS\n");
+        if(symptoms != null && !symptoms.isEmpty()){
+            for(String s: symptoms){
+                sb.append("- ").append(s).append("\n\n");
+            }
+        }
+        else{
+            sb.append("- \n\n");
+        }
+        return sb.toString().trim();
     }
 }

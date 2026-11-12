@@ -6,6 +6,6 @@
             prefWidth="860" prefHeight="500"
             styleClass="screen-Background">
     <left>
-        <fx:include fx:id="sidebar" source="sideMenu.fxml"/>
+        <fx:include fx:id="sideMenu" source="sideMenu.fxml"/>
     </left>
 </BorderPane>

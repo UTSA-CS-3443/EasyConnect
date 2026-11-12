@@ -186,6 +186,7 @@ public class DataHandler {
      * Loads all patients from the user file. Finds relevant information in other files.
      */
     public void loadPatients() {
+        users.removeAll(patients);
        patients.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
             String line;
@@ -218,7 +219,9 @@ public class DataHandler {
      * Loads all doctors from the user file. Finds relevant information in other files.
      */
     public void loadDoctors() {
+        users.removeAll(doctors);
         doctors.clear();
+        users.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
             String line;
             br.readLine();
@@ -233,6 +236,7 @@ public class DataHandler {
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,appointments,notes
                     Doctor d = new Doctor(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], appointments, notes);
                    // users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
+                    doctors.add(d);
                     users.add(d);
 
                 }
@@ -272,18 +276,56 @@ public class DataHandler {
      * @throws FileNotFoundException if the medical record file is not found correctly.
      */
     public MedicalRecord loadMedicalRecord(String id) throws FileNotFoundException {
-        Scanner mRFile = new Scanner(new File(medicalRecordFile));
-        MedicalRecord mr;
+        File file = new File("data/medicalRecord.txt");
+        if(!file.exists()) {
+            throw new FileNotFoundException("Cannot find medical record");
+        }
+        try(Scanner scanner = new Scanner(file)) {
+            scanner.useDelimiter("\\A");
+            String fileContent = scanner.hasNext() ? scanner.next() : "";
 
-        while (mRFile.hasNext()) {
-            String[] mRLine = mRFile.nextLine().split(",");
-            if (id.equals(mRLine[0])) {
-                // mr = new MedicalRecord()
-
-                //return mr;
+            String[] sections  = fileContent.split("(?m)^(?=\\d+,)");
+            for(String s: sections){
+                if(s == null || s.trim().isEmpty()){
+                    continue;
+                }
+                String[] lines = s.split("\\r?\\n");
+                if(lines.length > 0 && lines[0].contains(",")){
+                    String blockId = lines[0].split(",")[0].trim();
+                    if(blockId.equals(id)){
+                        String medicalHistory = "";
+                        ArrayList<String> symptoms = new ArrayList<>();
+                        String currSection = "";
+                        for(String line: lines){
+                            String l = line.trim();
+                            if(l.equals("MEDICAL HISTORY")){
+                                currSection = "HISTORY";
+                            }
+                            else if(l.equals("CURRENT SYMPTOMS")){
+                                currSection = "SYMPTOMS";
+                            }
+                            else if(l.startsWith("-")){
+                                String item =l.substring(1).trim();
+                                if("HISTORY".equals(currSection)){
+                                    medicalHistory = item;
+                                }
+                                else if("SYMPTOMS".equals(currSection)){
+                                    symptoms.add(item);
+                                }
+                            }
+                        }
+                        MedicalRecord record = new MedicalRecord(id, medicalHistory, medicalRecordFile);
+                        record.setSymptoms(symptoms);
+                        return record;
+                    }
+                }
             }
         }
-        mRFile.close();
+
+
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
@@ -297,6 +339,7 @@ public class DataHandler {
 
         for(Patient p: patients) {
             writer.write(p.getMedicalRecord().toCSV());
+            writer.newLine();
             writer.newLine();
         }
 
