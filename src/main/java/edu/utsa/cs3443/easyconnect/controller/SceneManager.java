@@ -12,7 +12,7 @@ public class SceneManager {
     private sideBarController sideMenu;
     private static SceneManager instance;
     private SceneManager() {}
-
+    private static final String FXML_PATH = "/edu/utsa/cs3443/easyconnect/layouts/";
     public static SceneManager getInstance() {
         if (instance == null) {
             instance = new SceneManager();
@@ -28,7 +28,7 @@ public class SceneManager {
         }
     }
     public void showOtherScreen(String fxml){
-        Parent root = loadFile(new FXMLLoader(getClass().getResource(fxml)));
+        Parent root = loadFile(new FXMLLoader(getClass().getResource(FXML_PATH+fxml)));
         stage.setScene(newScene(root));
     }
     public void showRoleSelection(){
@@ -36,8 +36,8 @@ public class SceneManager {
     }
 
     public void showLogin(String role){
-        String fxml = role.equals("doctor") ? "doctorLogin.fxml" : "patientlogin.fxml";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        String fxml = role.equals("doctor") ? "doctorLogin.fxml" : "patientLogin.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+fxml));
         Parent root = loadFile(loader);
         loginController lC = loader.getController();
         lC.setRole(role);
@@ -53,7 +53,7 @@ public class SceneManager {
     }
 
     public void buildShell(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+"main.fxml"));
         shell = loadFile(loader);
 
         sideMenu = (sideBarController) loader.getNamespace().get("sideMenu");
@@ -62,7 +62,7 @@ public class SceneManager {
     }
 
     public void showMainScreen(String fxml){
-        Parent mainScreen = loadFile(new FXMLLoader(getClass().getResource(fxml)));
+        Parent mainScreen = loadFile(new FXMLLoader(getClass().getResource(FXML_PATH+fxml)));
         shell.setCenter(mainScreen);
     }
 
@@ -72,7 +72,7 @@ public class SceneManager {
     }
     private Scene newScene(Parent root){
         Scene scene  = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/edu/utsa/cs3443/easyconnect/stylesheets/styles.css").toExternalForm());
         return scene;
     }
 }

@@ -8,6 +8,17 @@
     -fx-border-radius: 24;
 }
 
+.component-Header-Text {
+    fx-text-fill: #000000;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+.component-Text {
+    fx-text-fill: #000000;
+    -fx-font-size: 12;
+}
+
 .headerMain-Text {
     -fx-text-alignment: center;
     -fx-text-fill: #000080;
