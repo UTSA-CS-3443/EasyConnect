@@ -1,8 +1,8 @@
 package edu.utsa.cs3443.easyconnect.model;
 
-import java.awt.peer.ListPeer;
+
 import java.io.*;
-import java.nio.Buffer;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -186,6 +186,7 @@ public class DataHandler {
      * Loads all patients from the user file. Finds relevant information in other files.
      */
     public void loadPatients() {
+       patients.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
             String line;
             br.readLine();
@@ -200,8 +201,11 @@ public class DataHandler {
                     ArrayList<Medication> medications = loadMedications(id, true);
                     Payment payment = findPayment(s[0]);
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,balance,appointments,medications,notes,medicalRecord
-                    patients.add(new Patient(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], payment, appointments, medications, notes, mr));
-                    users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
+
+                    Patient p = new Patient(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], payment, appointments, medications, notes, mr);
+                    patients.add(p);
+                   // users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
+                    users.add(p);
                 }
             }
 
@@ -214,6 +218,7 @@ public class DataHandler {
      * Loads all doctors from the user file. Finds relevant information in other files.
      */
     public void loadDoctors() {
+        doctors.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
             String line;
             br.readLine();
@@ -226,8 +231,10 @@ public class DataHandler {
                     ArrayList<Note> notes = loadNotes(id, false);
 
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,appointments,notes
-                    doctors.add(new Doctor(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], appointments, notes));
-                    users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
+                    Doctor d = new Doctor(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8], appointments, notes);
+                   // users.add(new User(s[0], s[2], s[3], s[4], s[5], s[6], s[7], s[8]));
+                    users.add(d);
+
                 }
             }
 
@@ -243,7 +250,7 @@ public class DataHandler {
      */
     public void saveUsers() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(userFile));
-
+        writer.write("id,userType,name,password,email,address,gender,dateOfBirth,phoneNumber,balance\n");
         for(Patient p: patients) {
             writer.write(p.toCSV());
             writer.newLine();
@@ -272,7 +279,7 @@ public class DataHandler {
             String[] mRLine = mRFile.nextLine().split(",");
             if (id.equals(mRLine[0])) {
                 // mr = new MedicalRecord()
-                mRFile.close();
+
                 //return mr;
             }
         }
@@ -375,15 +382,22 @@ public class DataHandler {
      *
      * @throws IOException if the writer encounters any issues.
      */
-    public void saveNotes() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(noteFile));
+    public void saveNotes() {
 
-        for(Patient p: patients) {
-            for(Note n: p.getNotes()) {
-                writer.write(n.toCSV());
-                writer.newLine();
-            }
-        }
+       try (BufferedWriter writer = new BufferedWriter(new FileWriter(noteFile))) {
+
+           for (Patient p : patients) {
+               for (Note n : p.getNotes()) {
+                   writer.write(n.toCSV());
+                   writer.newLine();
+               }
+           }
+           writer.close();
+       }
+       catch (IOException e) {
+           e.printStackTrace();
+       }
+
     }
 
     /**
@@ -401,11 +415,11 @@ public class DataHandler {
         while (mFile.hasNext()) {
             String[] mLine = mFile.nextLine().split(",");
             if (isPatient && id.equals(mLine[0])) {
-                Medication a = new Medication(id, mLine[1], mLine[2], mLine[3], Integer.parseInt(mLine[3]));
+                Medication a = new Medication(id, mLine[1], mLine[2], mLine[3], Integer.parseInt(mLine[4]));
                 medications.add(a);
             }
             else if(!isPatient && id.equals(mLine[1])) {
-                Medication a = new Medication(mLine[0], id, mLine[2], mLine[3], Integer.parseInt(mLine[3]));
+                Medication a = new Medication(mLine[0], id, mLine[2], mLine[3], Integer.parseInt(mLine[4]));
                 medications.add(a);
             }
         }

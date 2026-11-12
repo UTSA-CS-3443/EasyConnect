@@ -19,6 +19,15 @@ public class loginController {
     @FXML private Hyperlink createAccount;
     @FXML private TextField emailField;
 
+    /*
+    @FXML
+    public void initialize(){
+        dataHandler.loadPatients();
+        dataHandler.loadDoctors();
+    }
+
+    */
+
 
     public void setRole(String role){
         this.role = role;
