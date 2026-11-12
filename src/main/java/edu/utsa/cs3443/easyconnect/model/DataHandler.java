@@ -24,6 +24,15 @@ public class DataHandler {
         users = new ArrayList<>();
     }
 
+    /**
+     * Returns the list of loaded patients.
+     *
+     * @return the patient list managed by this data handler
+     */
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
+
     public User findUsers(String email, String password){
         for(User user : users){
             if(user.getEmail().equals(email) && user.getPassword().equals(password)){
