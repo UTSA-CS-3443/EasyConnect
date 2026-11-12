@@ -48,7 +48,12 @@ public class Patient extends User implements toCSV {
     public void setMedications(ArrayList<Medication> medications) {
         this.medications = medications;
     }
-
+    public Payment getPayment() {
+        return payment;
+    }
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 
     /*
     NOTE* Work on this later
