@@ -10,17 +10,9 @@ MEDICAL RECORD
      - Seasonal allergies since childhood.
      - Family history: mother with type 2 diabetes, father with hypertension.
 
-     PAST MEDICATIONS
-     - Glipizide 5mg (2018-2019), discontinued due to mild dizziness.
-     - Amlodipine 5mg (2020-2021), switched to Lisinopril for better blood pressure control.
-
      CURRENT MEDICATIONS
      - Lisinopril 10mg, once daily.
      - Metformin 500mg, twice daily.
-
-     SURGERIES AND PROCEDURES
-     - Appendectomy, 2003. No complications.
-     - Cesarean section, 2014. No complications.
 
      CURRENT SYMPTOMS
      - Occasional fatigue in the afternoon.
