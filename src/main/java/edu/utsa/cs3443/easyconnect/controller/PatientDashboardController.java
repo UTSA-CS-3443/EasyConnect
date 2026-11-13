@@ -65,7 +65,7 @@ public class PatientDashboardController {
 
     @FXML
     public void onFillOutForm(){
-        sceneManager.navigateScreen("billing.fxml");
+        sceneManager.navigateScreen("patientForm.fxml");
     }
     @FXML
     public void onScheduleAppointment(){

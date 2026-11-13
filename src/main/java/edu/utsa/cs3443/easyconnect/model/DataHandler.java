@@ -230,7 +230,7 @@ public class DataHandler {
     public void loadDoctors() {
         users.removeAll(doctors);
         doctors.clear();
-        users.clear();
+        //users.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("data/user.csv"))) {
             String line;
             br.readLine();

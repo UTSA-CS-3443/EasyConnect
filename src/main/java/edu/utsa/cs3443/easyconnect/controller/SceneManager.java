@@ -55,8 +55,6 @@ public class SceneManager {
     public void buildShell(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+"main.fxml"));
         shell = loadFile(loader);
-
-        sideMenu = (sideBarController) loader.getNamespace().get("sideMenu");
         sideMenu.createMenu();
         stage.setScene(newScene(shell));
     }
@@ -74,5 +72,8 @@ public class SceneManager {
         Scene scene  = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/edu/utsa/cs3443/easyconnect/stylesheets/styles.css").toExternalForm());
         return scene;
+    }
+    public void setSideMenu(sideBarController s) {
+        this.sideMenu = s;
     }
 }

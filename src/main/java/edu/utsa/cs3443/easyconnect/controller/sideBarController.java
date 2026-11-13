@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.easyconnect.controller;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -16,16 +17,22 @@ private final Map<String, ToggleButton> sideItems = new HashMap<>();
 private final SceneManager scenes = SceneManager.getInstance();
 private final Session session = Session.getInstance();
 
+@FXML
+private void initialize() {
+    SceneManager.getInstance().setSideMenu(this);
+}
 
 private void addItem(String name, String fxml){
     ToggleButton button = new ToggleButton(name);
     button.getStyleClass().add("sidebar-item");
     button.setToggleGroup(toggleGroup);
     button.setMaxWidth(Double.MAX_VALUE);
+    button.setGraphicTextGap(10);
+    button.setGraphic(dotSelection());
 
     button.selectedProperty().addListener((observable, oldValue, newValue) -> {
         if(newValue) {
-            button.getStyleClass().remove("sidebar-item-selected");
+            button.getStyleClass().add("sidebar-item-selected");
             button.setGraphic(null);
 
         }
@@ -85,8 +92,8 @@ public void createMenu() {
 
     @FXML
     private void onLogout(){
-    session.logout();
-    scenes.showRoleSelection();
+    session.getInstance().logout();
+    scenes.getInstance().showRoleSelection();
 }
 
 

@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.PatientDashboardController">
    <children>
       <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="690.0" spacing="25.0" styleClass="screen-Background" stylesheets="@../stylesheets/styles.css">
@@ -26,7 +25,8 @@
                   <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
                      <children>
                         <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Next Appointment" />
-                        <Label styleClass="component-Text" text="Date here">
+                        <!-- This is the label your controller expects -->
+                        <Label fx:id="appointmentsLabel" styleClass="component-Text">
                            <VBox.margin>
                               <Insets top="25.0" />
                            </VBox.margin>
@@ -45,7 +45,7 @@
                   <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
                      <children>
                         <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Medications" />
-                        <Label styleClass="component-Text" text="Meds here">
+                        <Label fx:id="medicationsLabel" styleClass="component-Text">
                            <VBox.margin>
                               <Insets top="25.0" />
                            </VBox.margin>
@@ -61,11 +61,12 @@
                   <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
                      <children>
                         <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Payment Due" />
-                        <Label styleClass="component-Text" text="Payment here">
+                        <Label fx:id="paymentAmountLabel" styleClass="component-Text">
                            <VBox.margin>
                               <Insets top="25.0" />
                            </VBox.margin>
                         </Label>
+                        <Label fx:id="paymentDueLabel" styleClass="component-Text" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -88,13 +89,14 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
                      <children>
-                        <Button fx:id="fillOutFormButton" mnemonicParsing="false" style="-fx-font-size: 18;" text="Fill out Form">
+                        <!-- Changed fx:id to onAction so clicking the button calls the controller method -->
+                        <Button mnemonicParsing="false" onAction="#onFillOutForm" style="-fx-font-size: 18;" text="Fill out Form">
                            <styleClass>
                               <String fx:value="button-Background" />
                               <String fx:value="button-Text" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="scheduleAppointmentButton" mnemonicParsing="false" style="-fx-font-size: 18;" text="Schedule an Appointment">
+                        <Button mnemonicParsing="false" onAction="#onScheduleAppointment" style="-fx-font-size: 18;" text="Schedule an Appointment">
                            <styleClass>
                               <String fx:value="button-Background" />
                               <String fx:value="button-Text" />

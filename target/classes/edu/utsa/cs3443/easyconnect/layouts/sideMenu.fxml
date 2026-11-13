@@ -18,7 +18,7 @@
     </ImageView>
 
 
-    <VBox fx:id="menuBox" spacing="2" />
+    <VBox fx:id="menu" spacing="2" />
 
     <Region VBox.vgrow="ALWAYS" />
 
