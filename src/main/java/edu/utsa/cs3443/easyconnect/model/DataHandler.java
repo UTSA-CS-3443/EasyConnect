@@ -64,6 +64,7 @@ public class DataHandler {
      */
     public void addPatient(Patient patient) {
         patients.add(patient);
+        users.add(patient);
     }
 
     /**
@@ -73,6 +74,7 @@ public class DataHandler {
      */
     public void addDoctor(Doctor doctor) {
         doctors.add(doctor);
+        users.add(doctor);
     }
 
     /**
@@ -347,6 +349,7 @@ public class DataHandler {
         BufferedWriter writer = new BufferedWriter(new FileWriter(medicalRecordFile));
 
         for(Patient p: patients) {
+            if(p.getMedicalRecord() == null) continue;
             writer.write(p.getMedicalRecord().toCSV());
             writer.newLine();
             writer.newLine();
@@ -497,4 +500,24 @@ public class DataHandler {
 
         writer.close();
     }
+
+    public String createPatientId(){
+        String id = patients.get(patients.size() -1).getId();
+        int idInt = Integer.parseInt(id) + 1;
+        id =  Integer.toString(idInt);
+        return id;
+    }
+    public boolean emailExists(String email){
+        for(User u: users) {
+            if(u.getEmail().equalsIgnoreCase(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
 }

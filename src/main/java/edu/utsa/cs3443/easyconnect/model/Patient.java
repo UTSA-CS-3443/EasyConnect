@@ -82,9 +82,11 @@ public class Patient extends User implements toCSV {
         //Note use toCSV
     }
 
-    public String toCSV(){
 
-        return "";
+
+    public String toCSV(){
+        //id,userType,name,password,email,address,gender,dateOfBirth,phoneNumber,balance
+        return getId() + ",patient," + getName() + "," + getPassword() + "," + getEmail() + "," + getAddress() + "," + getGender() + "," + getDateOfBirth() + "," + getPhoneNumber() + "," + payment.getAmount();
     }
     public Medication getFirstMedication(){
         return medications.get(0);
