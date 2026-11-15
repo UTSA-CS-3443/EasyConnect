@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      prefWidth="690" prefHeight="500" spacing="14"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.PatientMedicationsController"
+      styleClass="screen-Background">
+    <padding>
+        <Insets top="60" bottom="24"/>
+    </padding>
+
+    <Label text="Medications" styleClass="headerMain-Text">
+        <VBox.margin><Insets left="45"/></VBox.margin>
+    </Label>
+
+
+    <VBox minHeight="120" maxHeight="330" spacing="10" styleClass="component-Background"
+          style="-fx-background-radius: 20;">
+        <VBox.margin><Insets left="45" right="80"/></VBox.margin>
+        <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+
+        <Label text="Medication(s):"
+               style="-fx-font-family: 'JetBrains Mono'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true;"/>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
+                    style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;">
+            <content>
+                <VBox fx:id="medicationList" spacing="3" style="-fx-background-color: transparent;"/>
+            </content>
+        </ScrollPane>
+    </VBox>
+</VBox>
