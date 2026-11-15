@@ -42,6 +42,9 @@ public class Patient extends User implements toCSV {
         return medications;
     }
     public Appointment getFirstAppointment() {
+        if(appointments != null || appointments.isEmpty()){
+            return null;
+        }
         return appointments.get(0);
     }
 
@@ -86,9 +89,13 @@ public class Patient extends User implements toCSV {
 
     public String toCSV(){
         //id,userType,name,password,email,address,gender,dateOfBirth,phoneNumber,balance
-        return getId() + ",patient," + getName() + "," + getPassword() + "," + getEmail() + "," + getAddress() + "," + getGender() + "," + getDateOfBirth() + "," + getPhoneNumber() + "," + payment.getAmount();
+        double balance = (payment == null) ? 0.0 : payment.getAmount();
+        return getId() + ",patient," + getName() + "," + getPassword() + "," + getEmail() + "," + getAddress() + "," + getGender() + "," + getDateOfBirth() + "," + getPhoneNumber() + "," + balance;
     }
     public Medication getFirstMedication(){
+        if(medications != null || medications.isEmpty()){
+            return null;
+        }
         return medications.get(0);
     }
 

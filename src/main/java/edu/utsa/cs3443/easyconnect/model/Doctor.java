@@ -52,6 +52,6 @@ public class Doctor extends User implements toCSV {
     //Check later
     @Override
     public String toCSV() {
-        return null;
+        return getId() + ",doctor," + getName() + "," + getPassword() + "," + getEmail() + "," + getAddress() + "," + getGender() + "," + getDateOfBirth() + "," + getPhoneNumber() + ",0";
     }
 }
