@@ -46,6 +46,6 @@ public class Appointment implements toCSV {
     }
 
     public String toCSV() {
-        return null;
+        return patientId + "," + doctorID + "," + date + "," + time;
     }
 }

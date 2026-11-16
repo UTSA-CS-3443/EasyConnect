@@ -267,11 +267,13 @@ public class DataHandler {
         BufferedWriter writer = new BufferedWriter(new FileWriter(userFile));
         writer.write("id,userType,name,password,email,address,gender,dateOfBirth,phoneNumber,balance\n");
         for(Patient p: patients) {
+            if (p.toCSV() == null) throw new IllegalStateException("Patient.toCSV() returned null for id " + p.getId());
             writer.write(p.toCSV());
             writer.newLine();
         }
 
         for(Doctor d: doctors) {
+            if (d.toCSV() == null) throw new IllegalStateException("Patient.toCSV() returned null for id " + d.getId());
             writer.write(d.toCSV());
             writer.newLine();
         }

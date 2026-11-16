@@ -18,6 +18,3 @@ MEDICAL RECORD
      - Occasional fatigue in the afternoon.
      - Mild tingling in the feet, reported in the last two months.
      - Increased thirst on days with higher blood sugar readings.
-
-1002,blah blah blah
-1003,blah blah blah

@@ -14,7 +14,7 @@ public class Doctor extends User implements toCSV {
 
         this.appointments = appointments;
         this.patients = new ArrayList<>();
-        this.notes = new ArrayList<>();
+        this.notes = notes;
     }
 
     public ArrayList<Appointment> getAppointments() {
