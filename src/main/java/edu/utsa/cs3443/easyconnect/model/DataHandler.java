@@ -210,6 +210,9 @@ public class DataHandler {
                     ArrayList<Appointment> appointments = loadAppointments(id, true);
                     ArrayList<Note> notes = loadNotes(id, true);
                     ArrayList<Medication> medications = loadMedications(id, true);
+                    if(mr != null){
+                        mr.setMedications(medications);
+                    }
                     Payment payment = findPayment(s[0]);
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,balance,appointments,medications,notes,medicalRecord
 
@@ -313,11 +316,14 @@ public class DataHandler {
                             if(l.equals("MEDICAL HISTORY")){
                                 currSection = "HISTORY";
                             }
+                            else if(l.equals("CURRENT MEDICATIONS")){
+                                currSection = "MEDS";
+                            }
                             else if(l.equals("CURRENT SYMPTOMS")){
                                 currSection = "SYMPTOMS";
                             }
                             else if(l.startsWith("-")){
-                                String item =l.substring(1).trim();
+                                String item = l.substring(1).trim();
                                 if("HISTORY".equals(currSection)){
                                     medicalHistory = item;
                                 }
