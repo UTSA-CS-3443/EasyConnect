@@ -178,7 +178,6 @@ public class DataHandler {
     private Payment findPayment(String id) {
         try (BufferedReader br = new BufferedReader(new FileReader("data/payment.csv"))) {
             String line;
-            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] s = line.split(",");
                 if(id.equals(s[0])){
