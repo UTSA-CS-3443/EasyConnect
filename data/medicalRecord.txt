@@ -11,8 +11,8 @@ MEDICAL RECORD
      - Family history: mother with type 2 diabetes, father with hypertension.
 
      CURRENT MEDICATIONS
-     - Lisinopril 10mg, once daily.
-     - Metformin 500mg, twice daily.
+     - Lisinopril,10mg,1
+     - Metformin,500mg,2
 
      CURRENT SYMPTOMS
      - Occasional fatigue in the afternoon.

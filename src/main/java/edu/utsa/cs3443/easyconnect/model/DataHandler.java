@@ -308,12 +308,21 @@ public class DataHandler {
                 if(lines.length > 0 && lines[0].contains(",")){
                     String blockId = lines[0].split(",")[0].trim();
                     if(blockId.equals(id)){
-                        String medicalHistory = "";
+                        String name = "";
+                        String dob = "";
+                        ArrayList<String> medicalHistory = new ArrayList<>();
                         ArrayList<String> symptoms = new ArrayList<>();
+                        ArrayList<Medication> medications = new ArrayList<>();
                         String currSection = "";
                         for(String line: lines){
                             String l = line.trim();
-                            if(l.equals("MEDICAL HISTORY")){
+                            if(l.startsWith("Name:")){
+                                name = l.substring("Name:".length()).trim();
+                            }
+                            else if(l.startsWith("Date of Birth:")){
+                                dob = l.substring("Date of Birth:".length()).trim();
+                            }
+                            else if(l.equals("MEDICAL HISTORY")){
                                 currSection = "HISTORY";
                             }
                             else if(l.equals("CURRENT MEDICATIONS")){
@@ -324,16 +333,26 @@ public class DataHandler {
                             }
                             else if(l.startsWith("-")){
                                 String item = l.substring(1).trim();
+                                if (item.isEmpty()) continue;
+
                                 if("HISTORY".equals(currSection)){
-                                    medicalHistory = item;
+                                    medicalHistory.add(item);
                                 }
                                 else if("SYMPTOMS".equals(currSection)){
                                     symptoms.add(item);
                                 }
+                                /*
+                                else if("MEDS".equals(currSection)){
+                                    medications.add(new Medication(id, ));
+                                }
+
+                                 */
                             }
                         }
-                        MedicalRecord record = new MedicalRecord(id, medicalHistory, medicalRecordFile);
+                        MedicalRecord record = new MedicalRecord(id, name, dob, medicalRecordFile);
                         record.setSymptoms(symptoms);
+                        //record.setMedications(medications);
+                        record.setMedicalHistory(medicalHistory);
                         return record;
                     }
                 }
