@@ -116,11 +116,13 @@ public class MedicalRecord implements toCSV {
         StringBuilder sb = new StringBuilder();
         sb.append(id).append(",\n");
         sb.append("MEDICAL RECORD\n");
-        sb.append("     Patient ID: ").append(id).append("\n\n");
+        sb.append("     Patient ID: ").append(id).append("\n");
+        sb.append("     Name: ").append(name).append("\n");
+        sb.append("     Date of Birth: ").append(date).append("\n\n");
         if(medicalHistory != null && !medicalHistory.isEmpty()) {
             sb.append("     MEDICAL HISTORY\n");
             for (String history : medicalHistory) {
-                sb.append("- ").append(history).append("\n\n");
+                sb.append("- ").append(history).append("\n");
             }
         }
         else{
@@ -129,7 +131,7 @@ public class MedicalRecord implements toCSV {
         sb.append("     CURRENT MEDICATIONS\n");
         if(medications != null && !medications.isEmpty()){
             for(Medication m: medications){
-                sb.append("- ").append(m.toString()).append("\n\n");
+                sb.append("- ").append(m.toString()).append("\n");
             }
         }
         else{
@@ -138,7 +140,7 @@ public class MedicalRecord implements toCSV {
         sb.append("     CURRENT SYMPTOMS\n");
         if(symptoms != null && !symptoms.isEmpty()){
             for(String s: symptoms){
-                sb.append("- ").append(s).append("\n\n");
+                sb.append("- ").append(s).append("\n");
             }
         }
         else{
