@@ -5,19 +5,15 @@ MEDICAL RECORD
      Date of Birth: 1985-03-14
 
      MEDICAL HISTORY
-     - Type 2 diabetes, diagnosed 2018, managed with diet and medication.
-     - Hypertension, diagnosed 2020.
-     - Seasonal allergies since childhood.
-     - Family history: mother with type 2 diabetes, father with hypertension.
-
+- Type 2 diabetes, diagnosed 2018, managed with diet and medication.
+- Hypertension, diagnosed 2020.
+- Seasonal allergies since childhood.
+- Family history: mother with type 2 diabetes, father with hypertension.
      CURRENT MEDICATIONS
-     - Lisinopril 10mg, once daily.
-     - Metformin 500mg, twice daily.
-
+- Lisinopril, 10ml, 1
+- Metformin, 500mg, 2
      CURRENT SYMPTOMS
-     - Occasional fatigue in the afternoon.
-     - Mild tingling in the feet, reported in the last two months.
-     - Increased thirst on days with higher blood sugar readings.
+- Occasional fatigue in the afternoon.
+- Mild tingling in the feet, reported in the last two months.
+- Increased thirst on days with higher blood sugar readings.
 
-1002,blah blah blah
-1003,blah blah blah

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefWidth="690" prefHeight="500" spacing="25"
+      styleClass="screen-Background"
+      stylesheets="@../stylesheets/styles.css"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.AccountController">
+    <padding>
+        <Insets top="30" right="35" bottom="30" left="35" />
+    </padding>
+
+    <Label text="Account" styleClass="headerMain-Text" />
+
+    <GridPane hgap="20" vgap="20" styleClass="component-Background">
+        <padding>
+            <Insets top="25" right="25" bottom="25" left="25" />
+        </padding>
+        <columnConstraints>
+            <ColumnConstraints minWidth="110" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="70" />
+        </columnConstraints>
+
+        <Label text="Name" styleClass="component-Header-Text" GridPane.rowIndex="0" />
+        <Label fx:id="nameLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label fx:id="idTitleLabel" text="Doctor ID" styleClass="component-Header-Text"
+               GridPane.rowIndex="1" />
+        <Label fx:id="idLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Email" styleClass="component-Header-Text" GridPane.rowIndex="2" />
+        <Label fx:id="emailLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Phone" styleClass="component-Header-Text" GridPane.rowIndex="3" />
+        <Label fx:id="phoneLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Address" styleClass="component-Header-Text" GridPane.rowIndex="4" />
+        <Label fx:id="addressLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Gender" styleClass="component-Header-Text" GridPane.rowIndex="5" />
+        <Label fx:id="genderLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+        <Label text="Date of birth" styleClass="component-Header-Text" GridPane.rowIndex="6" />
+        <Label fx:id="dateOfBirthLabel" wrapText="true" styleClass="component-Text"
+               GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    </GridPane>
+</VBox>

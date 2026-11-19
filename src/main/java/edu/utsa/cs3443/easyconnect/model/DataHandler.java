@@ -17,6 +17,7 @@ public class DataHandler {
     private final String appointmentFile = "data/appointment.csv";
     private final String medicationFile = "data/medication.csv";
     private final String noteFile = "data/note.csv";
+    private final String paymentFile = "data/payment.csv";
 
     public DataHandler() {
         patients = new ArrayList<>();
@@ -64,6 +65,7 @@ public class DataHandler {
      */
     public void addPatient(Patient patient) {
         patients.add(patient);
+        users.add(patient);
     }
 
     /**
@@ -73,6 +75,7 @@ public class DataHandler {
      */
     public void addDoctor(Doctor doctor) {
         doctors.add(doctor);
+        users.add(doctor);
     }
 
     /**
@@ -176,7 +179,6 @@ public class DataHandler {
     private Payment findPayment(String id) {
         try (BufferedReader br = new BufferedReader(new FileReader("data/payment.csv"))) {
             String line;
-            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] s = line.split(",");
                 if(id.equals(s[0])){
@@ -209,6 +211,9 @@ public class DataHandler {
                     ArrayList<Appointment> appointments = loadAppointments(id, true);
                     ArrayList<Note> notes = loadNotes(id, true);
                     ArrayList<Medication> medications = loadMedications(id, true);
+                    if(mr != null){
+                        mr.setMedications(medications);
+                    }
                     Payment payment = findPayment(s[0]);
                     //id,name,password,email,address,gender,dateOfBirth,phoneNumber,balance,appointments,medications,notes,medicalRecord
 
@@ -265,11 +270,13 @@ public class DataHandler {
         BufferedWriter writer = new BufferedWriter(new FileWriter(userFile));
         writer.write("id,userType,name,password,email,address,gender,dateOfBirth,phoneNumber,balance\n");
         for(Patient p: patients) {
+            if (p.toCSV() == null) throw new IllegalStateException("Patient.toCSV() returned null for id " + p.getId());
             writer.write(p.toCSV());
             writer.newLine();
         }
 
         for(Doctor d: doctors) {
+            if (d.toCSV() == null) throw new IllegalStateException("Patient.toCSV() returned null for id " + d.getId());
             writer.write(d.toCSV());
             writer.newLine();
         }
@@ -302,29 +309,51 @@ public class DataHandler {
                 if(lines.length > 0 && lines[0].contains(",")){
                     String blockId = lines[0].split(",")[0].trim();
                     if(blockId.equals(id)){
-                        String medicalHistory = "";
+                        String name = "";
+                        String dob = "";
+                        ArrayList<String> medicalHistory = new ArrayList<>();
                         ArrayList<String> symptoms = new ArrayList<>();
+                        ArrayList<Medication> medications = new ArrayList<>();
                         String currSection = "";
                         for(String line: lines){
                             String l = line.trim();
-                            if(l.equals("MEDICAL HISTORY")){
+                            if(l.startsWith("Name:")){
+                                name = l.substring("Name:".length()).trim();
+                            }
+                            else if(l.startsWith("Date of Birth:")){
+                                dob = l.substring("Date of Birth:".length()).trim();
+                            }
+                            else if(l.equals("MEDICAL HISTORY")){
                                 currSection = "HISTORY";
+                            }
+                            else if(l.equals("CURRENT MEDICATIONS")){
+                                currSection = "MEDS";
                             }
                             else if(l.equals("CURRENT SYMPTOMS")){
                                 currSection = "SYMPTOMS";
                             }
                             else if(l.startsWith("-")){
-                                String item =l.substring(1).trim();
+                                String item = l.substring(1).trim();
+                                if (item.isEmpty()) continue;
+
                                 if("HISTORY".equals(currSection)){
-                                    medicalHistory = item;
+                                    medicalHistory.add(item);
                                 }
                                 else if("SYMPTOMS".equals(currSection)){
                                     symptoms.add(item);
                                 }
+                                /*
+                                else if("MEDS".equals(currSection)){
+                                    medications.add(new Medication(id, ));
+                                }
+
+                                 */
                             }
                         }
-                        MedicalRecord record = new MedicalRecord(id, medicalHistory, medicalRecordFile);
+                        MedicalRecord record = new MedicalRecord(id, name, dob, medicalRecordFile);
                         record.setSymptoms(symptoms);
+                        //record.setMedications(medications);
+                        record.setMedicalHistory(medicalHistory);
                         return record;
                     }
                 }
@@ -347,6 +376,7 @@ public class DataHandler {
         BufferedWriter writer = new BufferedWriter(new FileWriter(medicalRecordFile));
 
         for(Patient p: patients) {
+            if(p.getMedicalRecord() == null) continue;
             writer.write(p.getMedicalRecord().toCSV());
             writer.newLine();
             writer.newLine();
@@ -497,4 +527,36 @@ public class DataHandler {
 
         writer.close();
     }
+
+    public String createPatientId(){
+        String id = patients.get(patients.size() -1).getId();
+        int idInt = Integer.parseInt(id) + 1;
+        id =  Integer.toString(idInt);
+        return id;
+    }
+    public boolean emailExists(String email){
+        for(User u: users) {
+            if(u.getEmail().equalsIgnoreCase(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /* Do later
+    public void savePayment(){
+        BufferedWriter writer = new BufferedWriter(new FileWriter(paymentFile));
+        for(Patient p: patients) {
+            for(Payment payment: p.getPayment()){
+
+            }
+        }
+
+
+    }
+*/
+
+
+
+
 }

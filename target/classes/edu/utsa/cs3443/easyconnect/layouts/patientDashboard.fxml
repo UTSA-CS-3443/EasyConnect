@@ -25,7 +25,6 @@
                   <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="145.0" styleClass="component-Background" stylesheets="@../stylesheets/styles.css">
                      <children>
                         <Label alignment="TOP_CENTER" styleClass="component-Header-Text" text="Next Appointment" />
-                        <!-- This is the label your controller expects -->
                         <Label fx:id="appointmentsLabel" styleClass="component-Text">
                            <VBox.margin>
                               <Insets top="25.0" />
@@ -89,7 +88,6 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
                      <children>
-                        <!-- Changed fx:id to onAction so clicking the button calls the controller method -->
                         <Button mnemonicParsing="false" onAction="#onFillOutForm" style="-fx-font-size: 18;" text="Fill out Form">
                            <styleClass>
                               <String fx:value="button-Background" />

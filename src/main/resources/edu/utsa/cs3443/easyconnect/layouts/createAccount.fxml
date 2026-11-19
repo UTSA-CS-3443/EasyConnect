@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500" prefWidth="860" styleClass="component-Background" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.CreateAccountController">
+
+    <top>
+        <HBox alignment="TOP_LEFT" spacing="24">
+            <padding><Insets bottom="0" left="24" right="28" top="16" /></padding>
+
+            <Label alignment="CENTER" prefHeight="64" prefWidth="190" style="-fx-background-radius: 24;" styleClass="headerMain-Background, headerMain-Text" stylesheets="@../stylesheets/styles.css" text="Create Account" textAlignment="CENTER" wrapText="true" />
+
+            <Button onAction="#onBack" prefHeight="32" prefWidth="210" styleClass="button-Background, button-Text" stylesheets="@../stylesheets/styles.css" text="Go Back to Main Screen">
+                <HBox.margin><Insets top="12" /></HBox.margin>
+            </Button>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <ImageView fitHeight="50" fitWidth="73.0" preserveRatio="true">
+                <image>
+                    <Image url="@../assets/Logo.png" />
+                </image>
+            </ImageView>
+        </HBox>
+    </top>
+
+    <center>
+        <GridPane hgap="60" prefHeight="301.0" prefWidth="860.0" vgap="10">
+            <padding><Insets bottom="0" left="40" right="40" top="20" /></padding>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label styleClass="headerSmall-Text" text="Full Name" />
+                <TextField fx:id="nameField" maxWidth="340" prefHeight="34" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label styleClass="headerSmall-Text" text="Email" />
+                <TextField fx:id="emailField" maxWidth="340" prefHeight="34" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label styleClass="headerSmall-Text" text="Password" />
+                <PasswordField fx:id="passwordField" maxWidth="340" prefHeight="34" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label styleClass="headerSmall-Text" text="Confirm Password" />
+                <PasswordField fx:id="confirmPasswordField" maxWidth="340" prefHeight="34" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label styleClass="headerSmall-Text" text="Phone Number" />
+                <TextField fx:id="phoneField" maxWidth="340" prefHeight="34" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label styleClass="headerSmall-Text" text="Address" />
+                <TextField fx:id="addressField" maxWidth="340" prefHeight="34" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label styleClass="headerSmall-Text" text="Gender" />
+                <ComboBox fx:id="genderBox" prefHeight="34" prefWidth="340" promptText="Select">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Female" />
+                            <String fx:value="Male" />
+                            <String fx:value="Other" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label styleClass="headerSmall-Text" text="Date of Birth" />
+                <TextField fx:id="dobField" maxWidth="340" prefHeight="34" promptText="MM-DD-YYYY" />
+            </VBox>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <padding><Insets bottom="20" left="40" right="40" top="0" /></padding>
+
+            <Button defaultButton="true" onAction="#onCreateAccount" prefHeight="38" prefWidth="210" styleClass="button-Background" stylesheets="@../stylesheets/styles.css" text="Create Account" textFill="WHITE" />
+
+            <Label fx:id="errorLabel" style="-fx-text-fill: #c23b3b;" />
+        </HBox>
+    </bottom>
+</BorderPane>

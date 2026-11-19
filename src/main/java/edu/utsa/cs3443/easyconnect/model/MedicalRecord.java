@@ -6,13 +6,17 @@ public class MedicalRecord implements toCSV {
 
     private ArrayList<String> symptoms;
     private ArrayList<Medication> medications;
-    private String medicalHistory;
+    private ArrayList <String> medicalHistory;
     private String filePath;
     private String id;
+    private String name;
+    private String date;
 
-    public MedicalRecord(String id, String m, String f) {
+    public MedicalRecord(String id, String name, String dateOfBirth, String f) {
         this.id = id;
-        medicalHistory = m;
+        this.name = name;
+        this.date = dateOfBirth;
+        this.medicalHistory = new ArrayList<>();
         filePath = f;
         symptoms = new ArrayList<>();
         medications = new ArrayList<>();
@@ -26,16 +30,25 @@ public class MedicalRecord implements toCSV {
         return id;
     }
 
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getDateOfBirth(){
+        return date;
+    }
+    public void setDateOfBirth(String date){
+        this.date = date;
+    }
+
     public void setId(String id){
         this.id = id;
     }
 
     public ArrayList<Medication> getMedications() {
         return medications;
-    }
-
-    public String getMedicalHistory() {
-        return medicalHistory;
     }
 
     public String getFilePath() {
@@ -50,8 +63,12 @@ public class MedicalRecord implements toCSV {
         this.medications = medications;
     }
 
-    public void setMedicalHistory(String medicalHistory) {
+    public void setMedicalHistory(ArrayList<String> medicalHistory) {
         this.medicalHistory = medicalHistory;
+    }
+
+    public ArrayList<String> getMedicalHistory(){
+        return medicalHistory;
     }
 
     public void setFilePath(String filePath) {
@@ -99,11 +116,14 @@ public class MedicalRecord implements toCSV {
         StringBuilder sb = new StringBuilder();
         sb.append(id).append(",\n");
         sb.append("MEDICAL RECORD\n");
-        sb.append("     Patient ID: ").append(id).append("\n\n");
-
-        sb.append("     MEDICAL HISTORY\n");
-        if(medicalHistory != null && !medicalHistory.trim().isEmpty()) {
-            sb.append("- ").append(medicalHistory).append("\n\n");
+        sb.append("     Patient ID: ").append(id).append("\n");
+        sb.append("     Name: ").append(name).append("\n");
+        sb.append("     Date of Birth: ").append(date).append("\n\n");
+        if(medicalHistory != null && !medicalHistory.isEmpty()) {
+            sb.append("     MEDICAL HISTORY\n");
+            for (String history : medicalHistory) {
+                sb.append("- ").append(history).append("\n");
+            }
         }
         else{
             sb.append("- \n\n");
@@ -111,7 +131,7 @@ public class MedicalRecord implements toCSV {
         sb.append("     CURRENT MEDICATIONS\n");
         if(medications != null && !medications.isEmpty()){
             for(Medication m: medications){
-                sb.append("- ").append(m.toString()).append("\n\n");
+                sb.append("- ").append(m.toString()).append("\n");
             }
         }
         else{
@@ -120,7 +140,7 @@ public class MedicalRecord implements toCSV {
         sb.append("     CURRENT SYMPTOMS\n");
         if(symptoms != null && !symptoms.isEmpty()){
             for(String s: symptoms){
-                sb.append("- ").append(s).append("\n\n");
+                sb.append("- ").append(s).append("\n");
             }
         }
         else{
