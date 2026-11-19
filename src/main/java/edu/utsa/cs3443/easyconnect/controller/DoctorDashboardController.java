@@ -42,7 +42,7 @@ public class DoctorDashboardController {
 
     @FXML
     public void onNoteButtonClick(ActionEvent e) { //Quick Action Button
-        scenes.navigateScreen("patientRecomendations.fxml"); //Loads write note screen
+        scenes.navigateScreen("doctorNote.fxml"); //Loads write note screen
     }
 
 }

@@ -74,8 +74,8 @@ public void createMenu() {
         addItem("Dashboard", "doctorDashboard.fxml");
         addItem("Patient Lookup", "doctorLookup.fxml");
         addItem("Appointments", "appointments.fxml");
-        addItem("Prescriptions", "doctorMedications.fxml");
-        addItem("Write Notes", "patientRecomendations.fxml");
+        addItem("Prescriptions", "doctorPrescription.fxml");
+        addItem("Write Notes", "doctorNote.fxml");
         addItem("Account", "account.fxml");
 
     } else {
