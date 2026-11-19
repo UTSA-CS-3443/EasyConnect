@@ -516,16 +516,14 @@ public class DataHandler {
      * @throws IOException if the writer encounters any issues.
      */
     public void saveMedications() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(medicationFile));
-
-        for(Patient p: patients) {
-            for(Medication m: p.getMedications()) {
-                writer.write(m.toCSV());
-                writer.newLine();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(medicationFile))) {
+            for (Patient patient : patients) {
+                for (Medication medication : patient.getMedications()) {
+                    writer.write(medication.toCSV());
+                    writer.newLine();
+                }
             }
         }
-
-        writer.close();
     }
 
     public String createPatientId(){

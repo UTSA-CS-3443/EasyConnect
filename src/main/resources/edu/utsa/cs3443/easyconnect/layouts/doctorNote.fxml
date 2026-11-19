@@ -9,7 +9,8 @@
 
 <VBox prefWidth="690" prefHeight="500" spacing="20"
       styleClass="screen-Background" stylesheets="@../stylesheets/styles.css"
-      xmlns:fx="http://javafx.com/fxml/1">
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.DoctorNoteController">
     <padding>
         <Insets top="30" right="35" bottom="30" left="35" />
     </padding>
@@ -26,7 +27,8 @@
         <TextField fx:id="doctorIdField" editable="false" promptText="Logged-in doctor ID" />
         <Label text="Note" styleClass="component-Header-Text" />
         <TextArea fx:id="recommendationArea" prefRowCount="4" wrapText="true" promptText="Write a patient note" />
-        <Button fx:id="saveNoteButton" text="Save to patient"
+        <Button fx:id="saveNoteButton" text="Save to patient" onAction="#onSavePatientNoteButtonClick"
                 styleClass="button-Background, button-Text" />
+        <Label fx:id="statusLabel" wrapText="true" styleClass="component-Text" />
     </VBox>
 </VBox>

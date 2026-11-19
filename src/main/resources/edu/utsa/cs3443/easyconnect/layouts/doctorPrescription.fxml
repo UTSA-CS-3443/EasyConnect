@@ -10,7 +10,8 @@
 
 <VBox prefWidth="690" prefHeight="500" spacing="20"
       styleClass="screen-Background" stylesheets="@../stylesheets/styles.css"
-      xmlns:fx="http://javafx.com/fxml/1">
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.DoctorPrescriptionController">
     <padding>
         <Insets top="30" right="35" bottom="30" left="35" />
     </padding>
@@ -43,7 +44,8 @@
                 <TextField fx:id="frequencyField" promptText="Whole number, such as 2" />
             </VBox>
         </HBox>
-        <Button fx:id="savePrescriptionButton" text="Save to patient"
+        <Button fx:id="savePrescriptionButton" text="Save to patient" onAction="#handlePrescribe"
                 styleClass="button-Background, button-Text" />
+        <Label fx:id="statusLabel" wrapText="true" styleClass="component-Text" />
     </VBox>
 </VBox>
