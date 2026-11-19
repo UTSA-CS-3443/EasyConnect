@@ -69,7 +69,7 @@ public class PatientDashboardController {
     }
     @FXML
     public void onScheduleAppointment(){
-        sceneManager.navigateScreen("patientAppointments.fxml");
+        sceneManager.navigateScreen("appointments.fxml");
     }
 
 

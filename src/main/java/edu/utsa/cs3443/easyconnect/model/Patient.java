@@ -42,7 +42,9 @@ public class Patient extends User implements toCSV {
         return medications;
     }
     public Appointment getFirstAppointment() {
-        return appointments.get(0);
+        if(appointments.size() != 0)
+            return appointments.get(0);
+        else return null;
     }
 
     public void setMedications(ArrayList<Medication> medications) {
@@ -87,7 +89,9 @@ public class Patient extends User implements toCSV {
         return "";
     }
     public Medication getFirstMedication(){
-        return medications.get(0);
+        if(medications.size() != 0)
+            return medications.get(0);
+        return null;
     }
 
 

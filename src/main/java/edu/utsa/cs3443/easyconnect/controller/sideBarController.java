@@ -73,7 +73,7 @@ public void createMenu() {
     if (session.isDoctor()) {
         addItem("Dashboard", "doctorDashboard.fxml");
         addItem("Patient Lookup", "doctorLookup.fxml");
-        addItem("Appointments", "doctorAppointments.fxml");
+        addItem("Appointments", "appointments.fxml");
         addItem("Prescriptions", "doctorMedications.fxml");
         addItem("Write Notes", "doctorRecomendations.fxml");
         addItem("Account", "account.fxml");
@@ -81,7 +81,7 @@ public void createMenu() {
     } else {
         addItem("Dashboard", "patientDashboard.fxml");
         addItem("Patient Form", "patientForm.fxml");
-        addItem("Appointments", "patientAppointments.fxml");
+        addItem("Appointments", "appointments.fxml");
         addItem("Billing", "billing.fxml");
         addItem("Medications", "patientMedications.fxml");
         addItem("Doctor's Notes", "patientRecomendations.fxml");
