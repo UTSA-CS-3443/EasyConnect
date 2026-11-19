@@ -17,6 +17,7 @@ public class DataHandler {
     private final String appointmentFile = "data/appointment.csv";
     private final String medicationFile = "data/medication.csv";
     private final String noteFile = "data/note.csv";
+    private final String paymentFile = "data/payment.csv";
 
     public DataHandler() {
         patients = new ArrayList<>();
@@ -542,6 +543,18 @@ public class DataHandler {
         return false;
     }
 
+    /* Do later
+    public void savePayment(){
+        BufferedWriter writer = new BufferedWriter(new FileWriter(paymentFile));
+        for(Patient p: patients) {
+            for(Payment payment: p.getPayment()){
+
+            }
+        }
+
+
+    }
+*/
 
 
 

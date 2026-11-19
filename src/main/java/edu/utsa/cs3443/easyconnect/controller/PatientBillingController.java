@@ -25,6 +25,7 @@ Patient patient;
     patient.getPayment().setDate(date);
     balanceDueLabel.setText(amount + "");
     dueDateLabel.setText(date);
+
 }
 
 }
