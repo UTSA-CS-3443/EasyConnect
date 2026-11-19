@@ -32,7 +32,7 @@ public class PatientFormController {
     public void initialize() {
 
         Session session = Session.getInstance();
-        Patient currPatient = (Patient) session.getCurrentUser();
+        this.currPatient = (Patient) session.getCurrentUser();
         MedicalRecord record = currPatient.getMedicalRecord();
         if(isRecordEmpty(record)) {
             makeEdit(true);
@@ -58,7 +58,7 @@ public class PatientFormController {
         if (record == null) {
             return true;
         }
-        return record.getSymptoms().isEmpty() && record.getMedications().isEmpty() && record.getMedications().isEmpty();
+        return record.getSymptoms().isEmpty() && record.getMedications().isEmpty() && record.getMedicalHistory().isEmpty();
     }
 
     private void makeEdit(boolean edit){
@@ -136,14 +136,15 @@ public class PatientFormController {
             medications.add(new Medication(currPatient.getId(), "", medT, "", 0));
         }
         record.setMedications(medications);
-        dataHandler.loadPatients();
-        dataHandler.updatePatient(currPatient);
+        //dataHandler.loadPatients();
+        if (dataHandler.findPatient(currPatient.getId()) != -1) {
+            dataHandler.updatePatient(currPatient);
+        }
+        else{
+            dataHandler.addPatient(currPatient);
+        }
         dataHandler.save();
 
         makeEdit(false);
     }
-
-
-
-
 }
