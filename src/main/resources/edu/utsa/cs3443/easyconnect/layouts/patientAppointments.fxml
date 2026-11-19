@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="500.0" prefWidth="690.0" style="-fx-background-color: #F1F1F1; -fx-background: #F1F1F1; -fx-padding: 0;" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.PatientAppointmentsController">
+    <content>
+        <VBox spacing="20.0" styleClass="screen-Background">
+            <padding>
+                <Insets bottom="30.0" top="60.0" />
+            </padding>
+
+            <Label styleClass="headerMain-Text" text="Schedule an Appointment">
+                <VBox.margin>
+                    <Insets left="45.0" />
+                </VBox.margin>
+            </Label>
+
+            <VBox spacing="14.0" style="-fx-background-radius: 20;" styleClass="component-Background">
+                <VBox.margin>
+                    <Insets left="45.0" right="80.0" />
+                </VBox.margin>
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+
+                <Label style="-fx-font-family: 'JetBrains Mono'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true;" text="New Appointment:" />
+
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <Label minWidth="110.0" styleClass="component-Text" text="Doctor:" />
+                    <ComboBox fx:id="doctorComboBox" maxWidth="1.7976931348623157E308" promptText="Select a doctor" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <Label minWidth="110.0" styleClass="component-Text" text="Date:" />
+                    <DatePicker fx:id="appointmentDatePicker" maxWidth="1.7976931348623157E308" promptText="Select a date" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <Label minWidth="110.0" styleClass="component-Text" text="Time:" />
+                    <ComboBox fx:id="timeComboBox" maxWidth="1.7976931348623157E308" promptText="Select a time slot" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+
+                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                    <padding>
+                        <Insets top="6.0" />
+                    </padding>
+                    <Label fx:id="statusLabel" styleClass="component-Text" />
+                    <Button mnemonicParsing="false" onAction="#onBookAppointment" style="-fx-font-size: 15px;" text="Book Appointment">
+                        <styleClass>
+                            <String fx:value="button-Background" />
+                            <String fx:value="button-Text" />
+                        </styleClass>
+                    </Button>
+                </HBox>
+            </VBox>
+
+            <VBox minHeight="120.0" spacing="10.0" style="-fx-background-radius: 20;" styleClass="component-Background">
+                <VBox.margin>
+                    <Insets left="45.0" right="80.0" />
+                </VBox.margin>
+                <padding>
+                    <Insets bottom="18.0" left="20.0" right="20.0" top="18.0" />
+                </padding>
+
+                <Label style="-fx-font-family: 'JetBrains Mono'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true;" text="Upcoming Appointment(s):" />
+
+                <VBox fx:id="upcomingAppointmentsList" spacing="6.0" />
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>
