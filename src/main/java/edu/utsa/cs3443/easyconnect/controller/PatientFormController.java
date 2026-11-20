@@ -47,7 +47,7 @@ public class PatientFormController {
             }
 
             for(Medication medication : record.getMedications()){
-                currentMedicationList.getChildren().add(customLabel(medication.toString()));
+                currentMedicationList.getChildren().add(customLabel(medication.getName()));
             }
 
         }

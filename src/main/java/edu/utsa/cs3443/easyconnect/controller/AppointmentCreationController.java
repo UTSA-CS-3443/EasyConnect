@@ -1,15 +1,14 @@
 package edu.utsa.cs3443.easyconnect.controller;
 
-import edu.utsa.cs3443.easyconnect.model.Appointment;
-import edu.utsa.cs3443.easyconnect.model.Doctor;
-import edu.utsa.cs3443.easyconnect.model.Patient;
-import edu.utsa.cs3443.easyconnect.model.User;
+import edu.utsa.cs3443.easyconnect.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -30,7 +29,7 @@ public class AppointmentCreationController {
 
     User chosenUser;
     private Session session = Session.getInstance();
-
+    private DataHandler dataHandler = Session.getDataHandler();
     @FXML
     public void initialize() {
 
@@ -121,5 +120,30 @@ public class AppointmentCreationController {
         }
 
         //FINISH THIS HERE
+        String dateStr  = dateBox.getValue().toString();
+        String timeStr = timeBox.getValue().toString();
+        Patient patient;
+        Doctor doctor;
+
+        if(session.isPatient()){
+            patient = (Patient) session.getCurrentUser();
+            doctor = (Doctor) chosenUser;
+        }
+        else {
+            doctor = (Doctor) session.getCurrentUser();
+            patient = (Patient) chosenUser;
+        }
+        //String pId, String dId, String d, String t
+        Appointment appointment = new Appointment(patient.getId(), doctor.getId(), dateStr, timeStr);
+
+        if(!patient.getAppointments().contains(appointment)) {
+            patient.getAppointments().add(appointment);
+        }
+        if(!doctor.getAppointments().contains(appointment)) {
+            doctor.getAppointments().add(appointment);
+        }
+        dataHandler.save();
+        ((Stage) ((Node) e.getSource()).getScene().getWindow()).close();
+
     }
 }
