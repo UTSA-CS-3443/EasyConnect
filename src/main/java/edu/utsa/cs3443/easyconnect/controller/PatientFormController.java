@@ -133,9 +133,11 @@ public class PatientFormController {
 
         ArrayList<Medication> medications = new ArrayList<>();
         for(String medT: grabItems(currentMedicationList)){
-            medications.add(new Medication(currPatient.getId(), "", medT, "", 0));
+            Medication med = new Medication(currPatient.getId(), "", medT, "", 0);
+            medications.add(med);
         }
         record.setMedications(medications);
+        currPatient.setMedications(medications);
         //dataHandler.loadPatients();
         if (dataHandler.findPatient(currPatient.getId()) != -1) {
             dataHandler.updatePatient(currPatient);

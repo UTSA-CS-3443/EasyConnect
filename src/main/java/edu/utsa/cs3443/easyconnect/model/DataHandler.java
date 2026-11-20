@@ -345,12 +345,11 @@ public class DataHandler {
                                 else if("SYMPTOMS".equals(currSection)){
                                     symptoms.add(item);
                                 }
-                                /*
+
                                 else if("MEDS".equals(currSection)){
-                                    medications.add(new Medication(id, ));
+                                    medications.add(new Medication(id, "", item, "", 0));
                                 }
 
-                                 */
                             }
                         }
                         MedicalRecord record = new MedicalRecord(id, name, dob, medicalRecordFile);

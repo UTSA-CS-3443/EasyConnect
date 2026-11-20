@@ -131,7 +131,15 @@ public class MedicalRecord implements toCSV {
         sb.append("     CURRENT MEDICATIONS\n");
         if(medications != null && !medications.isEmpty()){
             for(Medication m: medications){
-                sb.append("- ").append(m.toString()).append("\n");
+               // sb.append("- ").append(m.toString()).append("\n");
+                if(m.getDosage() != null && !m.getDosage().isEmpty()) {
+                    sb.append(m.getDosage()).append("\n");
+
+                }
+                if (m.getFrequency() != 0){
+                    sb.append(" ").append(m.getFrequency());
+                }
+                sb.append("\n");
             }
         }
         else{
