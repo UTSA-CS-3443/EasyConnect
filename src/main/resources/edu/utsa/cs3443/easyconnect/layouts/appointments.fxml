@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="690.0" styleClass="screen-Background" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.easyconnect.controller.AppointmentController">
@@ -35,32 +37,34 @@
                         <ComboBox fx:id="yearBox" prefWidth="150.0" />
                      </children>
                   </HBox>
-                  <GridPane fx:id="calendar" alignment="CENTER" prefHeight="240.0" prefWidth="513.0" VBox.vgrow="ALWAYS">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                    </rowConstraints>
-                     <VBox.margin>
-                        <Insets left="25.0" right="25.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                  </GridPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <GridPane fx:id="calendar" alignment="CENTER" minHeight="-Infinity" prefHeight="270.0" prefWidth="513.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" prefWidth="60.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </GridPane>
+                        <Pane fx:id="overlay" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </StackPane>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="50.0">
                      <padding>
                         <Insets left="25.0" top="10.0" />

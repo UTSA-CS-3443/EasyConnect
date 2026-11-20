@@ -3,6 +3,7 @@ package edu.utsa.cs3443.easyconnect.model;
 
 import java.io.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,6 +34,8 @@ public class DataHandler {
     public ArrayList<Patient> getPatients() {
         return patients;
     }
+
+    public ArrayList<Doctor> getDoctors() {return doctors;}
 
     public User findUsers(String email, String password){
         for(User user : users){
