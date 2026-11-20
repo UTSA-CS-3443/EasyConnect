@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefWidth="690" prefHeight="500"
+      spacing="20"
+      styleClass="screen-Background"
+      stylesheets="@../stylesheets/styles.css"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.PatientLookupController">
+
+    <padding>
+        <Insets top="30" right="35" bottom="30" left="35" />
+    </padding>
+
+    <Label text="Patients" styleClass="headerMain-Text" />
+
+    <Label text="Patient names" styleClass="component-Header-Text" />
+
+    <ListView fx:id="patientNamesList" prefHeight="180" VBox.vgrow="ALWAYS"
+              onMouseClicked="#onPatientSelected" />
+
+    <Label text="Patient information" styleClass="component-Header-Text" />
+
+    <TextArea fx:id="patientInfoArea" editable="false" wrapText="true"
+              prefHeight="140" promptText="Select a patient to view their information." />
+
+</VBox>
