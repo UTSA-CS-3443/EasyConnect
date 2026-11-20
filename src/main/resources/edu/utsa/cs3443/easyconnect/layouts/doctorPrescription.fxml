@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox prefWidth="690" prefHeight="500" spacing="20"
+      styleClass="screen-Background" stylesheets="@../stylesheets/styles.css"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.utsa.cs3443.easyconnect.controller.DoctorPrescriptionController">
+    <padding>
+        <Insets top="30" right="35" bottom="30" left="35" />
+    </padding>
+
+    <Label text="Prescriptions" styleClass="headerMain-Text" />
+
+    <VBox spacing="10" styleClass="component-Background">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+        </padding>
+        <HBox spacing="20">
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Patient ID" styleClass="component-Header-Text" />
+                <TextField fx:id="patientTextField" promptText="Enter patient ID" />
+            </VBox>
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Doctor ID" styleClass="component-Header-Text" />
+                <TextField fx:id="doctorIdField" editable="false" promptText="Logged-in doctor ID" />
+            </VBox>
+        </HBox>
+        <Label text="Medication" styleClass="component-Header-Text" />
+        <TextArea fx:id="medicationArea" prefRowCount="2" wrapText="true" promptText="Medication name" />
+        <HBox spacing="20">
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Dosage" styleClass="component-Header-Text" />
+                <TextField fx:id="dosageField" promptText="Amount and unit, such as 500mg" />
+            </VBox>
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Times per day" styleClass="component-Header-Text" />
+                <TextField fx:id="frequencyField" promptText="Whole number, such as 2" />
+            </VBox>
+        </HBox>
+        <Button fx:id="savePrescriptionButton" text="Save to patient" onAction="#handlePrescribe"
+                styleClass="button-Background, button-Text" />
+        <Label fx:id="statusLabel" wrapText="true" styleClass="component-Text" />
+    </VBox>
+</VBox>
